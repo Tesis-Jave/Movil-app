@@ -7,28 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".MainScreen">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:background="@color/vinoTinto"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        >
 
         <ImageButton
             android:background="@drawable/backarrow"
             android:id="@+id/imageButton7"
-            android:gravity="start|top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
              />
 
         <LinearLayout
-            android:layout_margin="5sp"
+            android:layout_marginBottom="5sp"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
             <ImageButton
                 android:id="@+id/imageButton9"

@@ -3,20 +3,40 @@ package com.example.javepuntos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainer
+import androidx.navigation.fragment.findNavController
+import com.example.javepuntos.databinding.ActivityMainScreenBinding
 
-class MainScreen : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_screen)
+class MainScreen : Fragment() {
 
-        val buttonProductos = findViewById<ImageButton>(R.id.buttonProductos)
+    private var _binding: ActivityMainScreenBinding?=null
+    private val binding get() = _binding!!
+    override fun onCreateView(
+        inflater:LayoutInflater, container: ViewGroup?,
+        savedInstanceState:Bundle?
+    ) :View? {
 
-        buttonProductos.setOnClickListener {
-            // Crear un Intent para abrir la segunda actividad
-            val intent = Intent(this, productos::class.java)
-            startActivity(intent)
+        _binding = ActivityMainScreenBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonProductos.setOnClickListener {
+
+            findNavController().navigate(R.id.aproductos)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
