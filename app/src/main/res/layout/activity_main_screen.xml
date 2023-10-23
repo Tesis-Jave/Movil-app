@@ -1,60 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainScreen">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/vinoTinto"
-        android:orientation="horizontal"
-        android:layout_gravity="start"
-        >
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="75dp"-->
+<!--        android:background="@color/vinoTinto">-->
 
-        <ImageButton
-            android:background="@drawable/backarrow"
-            android:id="@+id/imageButton7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-             />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton7"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:background="@drawable/backarrow" />-->
 
-        <LinearLayout
-            android:layout_marginBottom="5sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nombre usuario"-->
+<!--            android:layout_toStartOf="@id/imageButton7"-->
+<!--            android:gravity="center"/>-->
 
-            <ImageButton
-                android:id="@+id/imageButton9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/btn_star" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton9"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="@android:drawable/btn_star"-->
+<!--            android:src="@android:drawable/btn_star"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true" />-->
+<!--    </RelativeLayout>-->
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Nombre usuario" />
-        </LinearLayout>
-    </LinearLayout>
 
+    <!-- Barra superior con flecha de retroceso -->
+    <include layout="@layout/toolbar" />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -65,8 +55,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -75,16 +65,16 @@
                     android:id="@+id/buttonProductos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
                     android:src="@android:drawable/btn_star" />
 
                 <TextView
                     android:id="@+id/textProducto"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Productos" />
             </LinearLayout>
@@ -92,8 +82,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -108,26 +98,26 @@
 
                 <TextView
                     android:id="@+id/textPromocion"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Promociones" />
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -141,10 +131,10 @@
 
                 <TextView
                     android:id="@+id/textProducts"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Puntos" />
             </LinearLayout>
@@ -152,8 +142,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -168,10 +158,10 @@
 
                 <TextView
                     android:id="@+id/textCafeteria"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Cafeterias" />
             </LinearLayout>
@@ -187,8 +177,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -203,10 +193,10 @@
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="Productos" />
             </LinearLayout>
@@ -216,13 +206,12 @@
     </TableLayout>
 
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/vinoTinto"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/vinoTinto">
 
         <!-- Linear Layout horizontal para los botones -->
         <LinearLayout
@@ -237,40 +226,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:src="@drawable/profile"
-                android:background="@drawable/botones"/>
+                android:background="@drawable/botones"
+                android:src="@drawable/profile" />
 
             <ImageButton
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/home"
+                android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/button1"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/botones"/>
+                android:background="@drawable/botones"
+                android:src="@drawable/home" />
 
             <ImageButton
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/paper"
+                android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/button2"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/botones"/>
+                android:background="@drawable/botones"
+                android:src="@drawable/paper" />
 
             <ImageButton
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/map"
-                android:layout_toEndOf="@id/button3"
-                android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/botones"/>
+                android:layout_toEndOf="@id/button3"
+                android:layout_weight="1"
+                android:background="@drawable/botones"
+                android:src="@drawable/map" />
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
-</LinearLayout>
+</RelativeLayout>

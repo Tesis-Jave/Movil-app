@@ -1,29 +1,13 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
-
-<!--     Barra de herramientas superior con nombre javepuntos y menu de settings -->
-<!--    <com.google.android.material.appbar.MaterialToolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="@color/vinoTinto" />-->
+    android:layout_height="match_parent">
+    <!-- Barra superior -->
+    <include layout="@layout/toolbar" />
 
     <!-- Contenido principal -->
 
-    <!-- Barra de herramientas inferior -->
-    <include
-        layout="@layout/content_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="-1dp" />
-
+    <!-- Tu MaterialToolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarBottom"
         android:layout_width="match_parent"
@@ -79,17 +63,5 @@
                 android:background="@drawable/botones"/>
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
-
-    <!-- Botón flotante -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="80dp"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:background="@color/vinoTinto"/>
 
 </RelativeLayout>
