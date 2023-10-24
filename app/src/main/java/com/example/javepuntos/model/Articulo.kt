@@ -11,5 +11,6 @@ data class Articulo(
     @SerializedName("medidareferencia") val medidaReferencia: String?,
     @SerializedName("tipoarticulo") val tipoArticulo: String?,
     @SerializedName("stock") val stock: Int?,
-    @SerializedName("precio") val precio: Float
+    @SerializedName("precio") val precio: Float,
+    @SerializedName("foto") val foto: String?
 )

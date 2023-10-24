@@ -30,8 +30,11 @@ class MainScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonProductos.setOnClickListener {
-
-            findNavController().navigate(R.id.aproductos)
+        // se lanza el fragmento
+        //  findNavController().navigate(R.id.aproductos)
+            // Se lanza actividad nueva para los productos
+            val intent = Intent(requireContext(), ProductosMain::class.java)
+            startActivity(intent)
         }
     }
 

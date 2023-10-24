@@ -35,5 +35,9 @@
             android:id="@+id/aproductos"
             app:destination="@id/SecondFragment" />
     </fragment>
-
+    <!--        <activity-->
+    <!--            android:id="@+id/activityProductosMain"-->
+    <!--            android:name="com.example.javepuntos.ProductosMain"-->
+    <!--            android:label="Productos"-->
+    <!--            tools:layout="@layout/activity_productos_main" />-->
 </navigation>

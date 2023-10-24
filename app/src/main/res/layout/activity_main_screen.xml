@@ -7,40 +7,8 @@
     android:orientation="vertical"
     tools:context=".MainScreen">
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="75dp"-->
-<!--        android:background="@color/vinoTinto">-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton7"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:background="@drawable/backarrow" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Nombre usuario"-->
-<!--            android:layout_toStartOf="@id/imageButton7"-->
-<!--            android:gravity="center"/>-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton9"-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:background="@android:drawable/btn_star"-->
-<!--            android:src="@android:drawable/btn_star"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_centerVertical="true" />-->
-<!--    </RelativeLayout>-->
-
-
     <!-- Barra superior con flecha de retroceso -->
-    <include layout="@layout/toolbar" />
+    <!-- <include layout="@layout/toolbar" />-->
 
     <TableLayout
         android:layout_width="match_parent"
@@ -187,7 +155,6 @@
                     android:id="@+id/imageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:src="@android:drawable/btn_star" />
 
@@ -204,62 +171,5 @@
         </LinearLayout>
 
     </TableLayout>
-
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/vinoTinto">
-
-        <!-- Linear Layout horizontal para los botones -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Botones en la barra inferior -->
-            <ImageButton
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/botones"
-                android:src="@drawable/profile" />
-
-            <ImageButton
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/button1"
-                android:layout_weight="1"
-                android:background="@drawable/botones"
-                android:src="@drawable/home" />
-
-            <ImageButton
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/button2"
-                android:layout_weight="1"
-                android:background="@drawable/botones"
-                android:src="@drawable/paper" />
-
-            <ImageButton
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_toEndOf="@id/button3"
-                android:layout_weight="1"
-                android:background="@drawable/botones"
-                android:src="@drawable/map" />
-        </LinearLayout>
-    </com.google.android.material.appbar.MaterialToolbar>
 
 </RelativeLayout>
