@@ -10,6 +10,9 @@
     <string name="password">Contraseña</string>
     <string name="contentDescription">Logo de los servicios de alimentación de la Javeriana</string>
     <string name="LogIn">Iniciar sesión</string>
+    <string name="SignUp">Crear cuenta</string>
+    <string name="forget">¿Olvidaste tu contraseña?</string>
+    <string name="invited">Entrar como invitado</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -50,4 +53,5 @@
     <string name="title_activity_productos">ProductosActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_profile">profileActivity</string>
 </resources>

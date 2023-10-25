@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val token = intent.getStringExtra("response_data")
+        println(token)
+
 //        setSupportActionBar(binding.toolbar)
 //
 //        val navController = findNavController(R.id.nav_host_fragment_content_main)

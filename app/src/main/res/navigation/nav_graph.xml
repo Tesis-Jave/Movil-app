@@ -16,16 +16,6 @@
             app:destination="@id/LoginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/LoginFragment"
-        android:name="com.example.javepuntos.LoginFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/login">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/MenuFragment"
         android:name="com.example.javepuntos.MainScreen"
         android:label="@string/first_fragment_label"

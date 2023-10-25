@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_profile"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.javepuntos.LoginFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/login">
+
+        <action
+            android:id="@+id/SignUpAction"
+            app:destination="@id/SignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.example.javepuntos.SignUpFragment"
+        android:label="@string/SignUp"
+        tools:layout="@layout/signup">
+        <action
+            android:id="@+id/create_user"
+            app:destination="@id/LoginFragment"
+            />
+    </fragment>
+</navigation>
