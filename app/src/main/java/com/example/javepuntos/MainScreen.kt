@@ -1,16 +1,11 @@
 package com.example.javepuntos
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.navigation.fragment.findNavController
 import com.example.javepuntos.databinding.ActivityMainScreenBinding
 
 class MainScreen : Fragment() {
@@ -33,7 +28,7 @@ class MainScreen : Fragment() {
         // se lanza el fragmento
         //  findNavController().navigate(R.id.aproductos)
             // Se lanza actividad nueva para los productos
-            val intent = Intent(requireContext(), ProductosMain::class.java)
+            val intent = Intent(requireContext(), DepartamentosMain::class.java)
             startActivity(intent)
         }
     }
