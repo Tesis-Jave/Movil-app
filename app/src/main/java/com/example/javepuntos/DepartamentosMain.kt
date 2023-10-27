@@ -40,29 +40,38 @@ class DepartamentosMain : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 // Procesar la respuesta del servidor
+                runOnUiThread {
 
-                println("entra a onresponse")
-                if (response.isSuccessful) {
-                    println("entra a if de respuesta")
-                    val responseData = response.body()?.string()
+                    println("entra a onresponse")
+                    if (response.isSuccessful) {
+                        println("entra a if de respuesta")
+                        val responseData = response.body()?.string()
 
-                    // Convertir el JSON en una lista de objetos Departamento
-                    val gson = Gson()
-                    val departamentos: List<Departamento> = gson.fromJson(responseData, object : TypeToken<List<Departamento>>() {}.type)
+                        // Convertir el JSON en una lista de objetos Departamento
+                        val gson = Gson()
+                        val departamentos: List<Departamento> = gson.fromJson(
+                            responseData,
+                            object : TypeToken<List<Departamento>>() {}.type
+                        )
 
-                    // Crear y configurar el adaptador
-                    val adapter = DepartamentoAdapter(this@DepartamentosMain, departamentos)
+                        // Crear y configurar el adaptador
+                        val adapter = DepartamentoAdapter(this@DepartamentosMain, departamentos)
 
-                    // Obtener el GridLayout y establecer el adaptador
-                    val gridLayout: GridLayout = findViewById(R.id.gridLayout)
-                    for (i in 0 until adapter.count) {
-                        val view = adapter.getView(i, null, gridLayout)
-                        gridLayout.addView(view)
-                    }
-                } else {
-                    runOnUiThread {
-                        Toast.makeText(applicationContext, "Error al obtener departamentos", Toast.LENGTH_SHORT).show()
-                        println("fallo al cargar los datos")
+                        // Obtener el GridLayout y establecer el adaptador
+                        val gridLayout: GridLayout = findViewById(R.id.gridLayout)
+                        for (i in 0 until adapter.count) {
+                            val view = adapter.getView(i, null, gridLayout)
+                            gridLayout.addView(view)
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(
+                                applicationContext,
+                                "Error al obtener departamentos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            println("fallo al cargar los datos")
+                        }
                     }
                 }
             }
