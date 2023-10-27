@@ -1,4 +1,6 @@
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,11 +33,14 @@ class DepartamentoAdapter(private val context: Context, private val departamento
         val departamentoNombreTextView: TextView = view.findViewById(R.id.departamentoNombreTextView)
 
         // Cargar la imagen desde la URL utilizando Glide o Picasso
-        Glide.with(context)
-            .load(departamento.url) // URL de la imagen del departamento
-            .placeholder(R.drawable.imagen_dummie) // Imagen predeterminada mientras se carga la imagen
-            .error(R.drawable.error) // Imagen de error si falla la carga
-            .into(departamentoImageView)
+
+        Handler(Looper.getMainLooper()).post {
+            Glide.with(context)
+                .load(departamento.url)
+                .placeholder(R.drawable.imagen_dummie)
+                .error(R.drawable.error)
+                .into(departamentoImageView)
+        }
 
 
         departamentoNombreTextView.text = departamento.descripcion

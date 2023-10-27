@@ -73,4 +73,5 @@
                 android:src="@drawable/map" />
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
+
 </RelativeLayout>

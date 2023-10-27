@@ -1,6 +1,7 @@
 package com.example.javepuntos
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.javepuntos.databinding.LoginBinding
+import com.example.javepuntos.model.TokenResponse
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -19,6 +23,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
+
 import java.io.IOException
 
 /**
@@ -72,6 +77,16 @@ class LoginFragment : Fragment() {
                     if (response.isSuccessful) {
                         // Procesa la respuesta exitosa aquí
                         val responseData = response.body()?.string()
+                        // Almacena el token en SharedPreferences
+                        val gson = Gson()
+                        val tokenResponse: TokenResponse = gson.fromJson(responseData, object : TypeToken<TokenResponse>() {}.type)
+
+                        val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("TOKEN_KEY", tokenResponse.token)
+                        editor.apply()
+
+
                         val intent = Intent(context, MainActivity::class.java)
                         intent.putExtra("response_data", responseData)
                         startActivity(intent)

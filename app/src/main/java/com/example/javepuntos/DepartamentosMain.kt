@@ -1,6 +1,7 @@
 package com.example.javepuntos
 
 import DepartamentoAdapter
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.GridLayout
@@ -17,23 +18,32 @@ class DepartamentosMain : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_departamentos_main)
 
+        // Recuperar el token para usaro en las consultas
+        val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("TOKEN_KEY", null)
+
         // Realizar la solicitud para obtener la lista de departamentos
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("http://192.168.56.1:3000/departamentos")
+            .header("Authorization", "Bearer $token")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // Manejar errores de conexión
                 runOnUiThread {
+                    println("FALLO CON EL ENDPOINT")
                     Toast.makeText(applicationContext, "Error al obtener departamentos", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 // Procesar la respuesta del servidor
+
+                println("entra a onresponse")
                 if (response.isSuccessful) {
+                    println("entra a if de respuesta")
                     val responseData = response.body()?.string()
 
                     // Convertir el JSON en una lista de objetos Departamento
@@ -52,6 +62,7 @@ class DepartamentosMain : AppCompatActivity() {
                 } else {
                     runOnUiThread {
                         Toast.makeText(applicationContext, "Error al obtener departamentos", Toast.LENGTH_SHORT).show()
+                        println("fallo al cargar los datos")
                     }
                 }
             }
