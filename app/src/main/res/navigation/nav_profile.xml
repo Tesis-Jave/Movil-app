@@ -21,8 +21,9 @@
         android:label="@string/SignUp"
         tools:layout="@layout/signup">
         <action
-            android:id="@+id/create_user"
+            android:id="@+id/volver"
             app:destination="@id/LoginFragment"
             />
     </fragment>
+
 </navigation>

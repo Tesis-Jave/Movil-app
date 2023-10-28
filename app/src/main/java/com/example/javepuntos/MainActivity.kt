@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
 
         val token = intent.getStringExtra("response_data")
         println(token)
@@ -39,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
         supportActionBar?.title = "Jave Puntos"
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

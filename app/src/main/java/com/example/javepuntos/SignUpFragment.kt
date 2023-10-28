@@ -35,6 +35,8 @@ class SignUpFragment : Fragment() {
     private lateinit var birthDateCampo: EditText
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +48,9 @@ class SignUpFragment : Fragment() {
             showDatePickerDialog()
         }
 
+        binding.volver.setOnClickListener {
+            findNavController().navigate(R.id.volver)
+        }
         binding.buttonCrearCuenta.setOnClickListener {
             val url = "http://192.168.1.5:3000/perfils" //German
             //val url = "http://192.168.56.1:3000/perfils/" // Juan M

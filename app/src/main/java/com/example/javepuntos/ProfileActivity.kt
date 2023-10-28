@@ -25,6 +25,8 @@ class ProfileActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_profile_content) as NavHostFragment
         navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
+
     }
 
     // Agrega esta función para habilitar la navegación hacia atrás en la actividad

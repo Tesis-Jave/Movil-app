@@ -4,8 +4,10 @@ import DepartamentoAdapter
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.GridLayout
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.model.Departamento
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -17,6 +19,10 @@ class DepartamentosMain : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_departamentos_main)
+
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
 
         // Recuperar el token para usaro en las consultas
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
