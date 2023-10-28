@@ -58,7 +58,6 @@ class LoginFragment : Fragment() {
         binding.buttonLogin.setOnClickListener {
             //val url = "http://192.168.1.5:3000/perfils/login?usuario=${binding.user.text.toString()}&password=${binding.password.text.toString()}" // Germán
             val url = "http://192.168.56.1:3000/perfils/login?usuario=${binding.user.text.toString()}&password=${binding.password.text.toString()}" // Juan M
-            println(url)
             val client = OkHttpClient()
 
             val request = Request.Builder()
