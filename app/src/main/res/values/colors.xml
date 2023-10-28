@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="vinoTinto">#821F1F</color>
     <color name="background_Color">#D9D9D9</color>
+    <color name="naranjaLogo">#ce7030</color>
+    <color name="rojoLogo">#ae3432</color>
 </resources>

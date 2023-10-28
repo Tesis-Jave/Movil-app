@@ -29,8 +29,8 @@
     <EditText
         android:id="@+id/username_Campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
@@ -59,14 +59,14 @@
     <EditText
         android:id="@+id/password_Campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="textPassword"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/password_text"
         app:layout_constraintTop_toBottomOf="@id/username_Campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView
@@ -90,14 +90,14 @@
     <EditText
         android:id="@+id/name_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
         app:layout_constraintLeft_toRightOf="@+id/name_text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_Campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
     <TextView
         android:id="@+id/cedula_text"
@@ -120,14 +120,14 @@
     <EditText
         android:id="@+id/cedula_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="number"
         app:layout_constraintLeft_toRightOf="@+id/cedula_text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView
@@ -151,14 +151,14 @@
     <EditText
         android:id="@+id/phone_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="phone"
         app:layout_constraintLeft_toRightOf="@id/phone_text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cedula_campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView
@@ -182,14 +182,14 @@
     <EditText
         android:id="@+id/email_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="textEmailAddress"
         app:layout_constraintLeft_toRightOf="@+id/email_text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/phone_campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView
@@ -213,14 +213,14 @@
     <EditText
         android:id="@+id/address_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
         app:layout_constraintLeft_toRightOf="@+id/address_text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email_campo"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView
@@ -243,8 +243,8 @@
     <EditText
         android:id="@+id/birth_date_campo"
         android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="date"
@@ -254,9 +254,9 @@
 
     <Button
         android:id="@+id/button_crear_cuenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/background_Color"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/naranjaLogo"
         android:text="@string/create"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -269,9 +269,9 @@
 
     <Button
         android:id="@+id/volver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/background_Color"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/rojoLogo"
         android:text="@string/volver"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -280,6 +280,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_crear_cuenta"
         app:layout_constraintVertical_bias="0.577"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
