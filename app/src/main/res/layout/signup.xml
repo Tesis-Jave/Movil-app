@@ -5,72 +5,266 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
     tools:context=".SignUpFragment">
 
-
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/username_Campo"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/user"
         android:id="@+id/username_Text"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-medium"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:breakStrategy="simple"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:labelFor="@id/username_Campo"
-        />
-
+        android:text="@string/user"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/username_Campo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/username_Campo"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="text"
+        app:layout_constraintLeft_toRightOf="@+id/username_Text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/password_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/password"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:breakStrategy="simple"
+        android:labelFor="@id/password_Campo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/password_Campo"
+        app:layout_constraintTop_toBottomOf="@id/username_Text"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/password_Campo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="textPassword"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/password_text"
+        app:layout_constraintTop_toBottomOf="@id/username_Campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:breakStrategy="simple"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:labelFor="@id/name_campo"
+        android:text="@string/name"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/name_campo"
+        app:layout_constraintTop_toBottomOf="@id/password_Campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/name_campo"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@id/password_text"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/name_text"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username_Text" />
-
+        app:layout_constraintTop_toBottomOf="@id/password_Campo"
+        android:layout_marginTop="10dp"
+        />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/username_Campo"
-        app:layout_constraintBottom_toTopOf="@id/password_Campo"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/password"
-        android:id="@+id/password_text"
-        android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-medium"
+        android:id="@+id/cedula_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:breakStrategy="simple"
-        android:labelFor="@id/password_Campo"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:labelFor="@id/cedula_campo"
+        android:text="@string/cedula"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/cedula_campo"
+        app:layout_constraintTop_toBottomOf="@id/name_text"
+        android:layout_marginTop="10dp"
         />
 
-
     <EditText
-        android:id="@+id/password_Campo"
-        android:layout_width="200dp"
+        android:id="@+id/cedula_campo"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@+id/cedula_text"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_text"
-        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/name_campo"
+        android:layout_marginTop="10dp"
         />
 
+    <TextView
+        android:id="@+id/phone_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/phone"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:breakStrategy="simple"
+        android:labelFor="@id/phone_campo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/phone_campo"
+        app:layout_constraintTop_toBottomOf="@id/cedula_text"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/phone_campo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="phone"
+        app:layout_constraintLeft_toRightOf="@id/phone_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cedula_campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/email"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:breakStrategy="simple"
+        android:labelFor="@id/email_campo"
+        app:layout_constraintTop_toBottomOf="@id/phone_campo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/email_campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/email_campo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toRightOf="@+id/email_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone_campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/address_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:text="@string/address"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:breakStrategy="simple"
+        android:labelFor="@id/address_campo"
+        app:layout_constraintTop_toBottomOf="@id/email_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/address_campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/address_campo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="text"
+        app:layout_constraintLeft_toRightOf="@+id/address_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_campo"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/birth_date_text"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:breakStrategy="simple"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
+        android:labelFor="@id/birth_date_campo"
+        android:text="@string/date"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/birth_date_campo"
+        app:layout_constraintTop_toBottomOf="@id/address_text" />
+
+    <EditText
+        android:id="@+id/birth_date_campo"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="username"
+        android:background="@drawable/edit_black_border"
+        android:inputType="date"
+        app:layout_constraintLeft_toRightOf="@id/birth_date_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/address_campo" />
+
+    <Button
+        android:id="@+id/button_crear_cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background_Color"
+        android:text="@string/create"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/birth_date_campo"
+        app:layout_constraintVertical_bias="0.577"
+        android:layout_marginTop="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

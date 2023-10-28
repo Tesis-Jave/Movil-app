@@ -13,9 +13,14 @@
     <string name="SignUp">Crear cuenta</string>
     <string name="forget">¿Olvidaste tu contraseña?</string>
     <string name="invited">Entrar como invitado</string>
-    <string name="name">Nombres y apellidos</string>
+    <string name="name">Nombre</string>
     <string name="phone">Celular</string>
     <string name="email">Correo</string>
+    <string name="address">Dirección</string>
+    <string name="date">Fecha de nacimiento</string>
+    <string name="create">Crear cuenta</string>
+    <string name="cedula">Cedula</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

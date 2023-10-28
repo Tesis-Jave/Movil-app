@@ -21,11 +21,13 @@ class DepartamentosMain : AppCompatActivity() {
         // Recuperar el token para usaro en las consultas
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
+        val url = "http://192.168.1.5:3000/departamentos" //German
+        //val url = "http://192.168.56.1:3000/perfils/" // Juan M
 
         // Realizar la solicitud para obtener la lista de departamentos
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://192.168.56.1:3000/departamentos")
+            .url(url)
             .header("Authorization", "Bearer $token")
             .build()
 
