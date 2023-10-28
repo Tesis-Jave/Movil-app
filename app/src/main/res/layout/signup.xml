@@ -5,19 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
     tools:context=".SignUpFragment">
 
     <TextView
         android:id="@+id/username_Text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:labelFor="@id/username_Campo"
         android:text="@string/user"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/username_Campo"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +28,7 @@
 
     <EditText
         android:id="@+id/username_Campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:autofillHints="username"
@@ -37,12 +40,13 @@
 
     <TextView
         android:id="@+id/password_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:text="@string/password"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-medium"
         android:breakStrategy="simple"
         android:labelFor="@id/password_Campo"
@@ -54,7 +58,7 @@
 
     <EditText
         android:id="@+id/password_Campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -67,15 +71,16 @@
 
     <TextView
         android:id="@+id/name_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:labelFor="@id/name_campo"
         android:text="@string/name"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/name_campo"
         app:layout_constraintTop_toBottomOf="@id/password_Campo"
@@ -84,7 +89,7 @@
 
     <EditText
         android:id="@+id/name_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -96,15 +101,16 @@
         />
     <TextView
         android:id="@+id/cedula_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:labelFor="@id/cedula_campo"
         android:text="@string/cedula"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/cedula_campo"
         app:layout_constraintTop_toBottomOf="@id/name_text"
@@ -113,7 +119,7 @@
 
     <EditText
         android:id="@+id/cedula_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -126,12 +132,13 @@
 
     <TextView
         android:id="@+id/phone_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:text="@string/phone"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-medium"
         android:breakStrategy="simple"
         android:labelFor="@id/phone_campo"
@@ -143,7 +150,7 @@
 
     <EditText
         android:id="@+id/phone_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -156,12 +163,13 @@
 
     <TextView
         android:id="@+id/email_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:text="@string/email"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-medium"
         android:breakStrategy="simple"
         android:labelFor="@id/email_campo"
@@ -173,7 +181,7 @@
 
     <EditText
         android:id="@+id/email_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -186,12 +194,13 @@
 
     <TextView
         android:id="@+id/address_text"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:text="@string/address"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-medium"
         android:breakStrategy="simple"
         android:labelFor="@id/address_campo"
@@ -203,7 +212,7 @@
 
     <EditText
         android:id="@+id/address_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -216,25 +225,26 @@
 
     <TextView
         android:id="@+id/birth_date_text"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="6dp"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
+        android:textAlignment="textStart"
         android:labelFor="@id/birth_date_campo"
         android:text="@string/date"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/birth_date_campo"
         app:layout_constraintTop_toBottomOf="@id/address_text" />
 
     <EditText
         android:id="@+id/birth_date_campo"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="date"
