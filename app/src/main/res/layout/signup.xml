@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/username_Text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
@@ -28,7 +28,7 @@
 
     <EditText
         android:id="@+id/username_Campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:autofillHints="username"
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/password_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="@string/password"
         android:gravity="center_vertical|start"
@@ -58,7 +58,7 @@
 
     <EditText
         android:id="@+id/password_Campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -71,7 +71,7 @@
 
     <TextView
         android:id="@+id/name_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
@@ -89,7 +89,7 @@
 
     <EditText
         android:id="@+id/name_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -101,7 +101,7 @@
         />
     <TextView
         android:id="@+id/cedula_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:breakStrategy="simple"
         android:fontFamily="sans-serif-medium"
@@ -119,7 +119,7 @@
 
     <EditText
         android:id="@+id/cedula_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -132,7 +132,7 @@
 
     <TextView
         android:id="@+id/phone_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="@string/phone"
         android:gravity="center_vertical|start"
@@ -150,7 +150,7 @@
 
     <EditText
         android:id="@+id/phone_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -163,7 +163,7 @@
 
     <TextView
         android:id="@+id/email_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="@string/email"
         android:gravity="center_vertical|start"
@@ -181,7 +181,7 @@
 
     <EditText
         android:id="@+id/email_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -194,7 +194,7 @@
 
     <TextView
         android:id="@+id/address_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="@string/address"
         android:gravity="center_vertical|start"
@@ -212,7 +212,7 @@
 
     <EditText
         android:id="@+id/address_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -225,7 +225,7 @@
 
     <TextView
         android:id="@+id/birth_date_text"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:breakStrategy="simple"
@@ -242,7 +242,7 @@
 
     <EditText
         android:id="@+id/birth_date_campo"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:autofillHints="username"
