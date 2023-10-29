@@ -1,3 +1,4 @@
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
@@ -26,10 +27,10 @@ class DepartamentoAdapter(private val context: Context, private val departamento
         return position.toLong()
     }
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val departamento = getItem(position)
         val view = LayoutInflater.from(context).inflate(R.layout.departamento_item, parent, false)
-        println(departamento)
         // Configurar la vista con datos del departamento
         val departamentoImageView: ImageView = view.findViewById(R.id.departamentoImageView)
         val departamentoNombreTextView: TextView = view.findViewById(R.id.departamentoNombreTextView)
@@ -52,7 +53,6 @@ class DepartamentoAdapter(private val context: Context, private val departamento
 
 
         departamentoNombreTextView.text = departamento.descripcion
-        println(departamentoNombreTextView.text)
         view.setOnClickListener {
             // Manejar el clic en el departamento aquí
             // Por ejemplo, abrir un nuevo fragmento con los productos del departamento

@@ -70,6 +70,7 @@ class DepartamentosMain : AppCompatActivity() {
                         val gridLayout: GridLayout = findViewById(R.id.gridLayout)
                         for (i in 0 until adapter.count) {
                             val view = adapter.getView(i, null, gridLayout)
+                            println(i)
                             gridLayout.addView(view)
                         }
                     } else {
