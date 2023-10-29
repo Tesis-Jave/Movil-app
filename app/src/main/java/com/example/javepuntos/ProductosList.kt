@@ -8,13 +8,12 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.javepuntos.R
+import com.example.javepuntos.model.Producto
 import org.json.JSONArray
 import org.json.JSONException
 
-data class Product(val dto: String, val id_articulo: Int, val id_preciosventa: Int, val id_tarifa: Int, val preciobruto: Double, val precioneto: Double)
-
-class Productos : AppCompatActivity() {
-    private val productList = ArrayList<Product>()
+class ProductosList : AppCompatActivity() {
+    private val productList = ArrayList<Producto>()
     private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,7 @@ class Productos : AppCompatActivity() {
                         val idTarifa = product.getInt("id_tarifa")
                         val precioBruto = product.getDouble("preciobruto")
                         val precioNeto = product.getDouble("precioneto")
-                        productList.add(Product(dto, idArticulo, idPreciosVenta, idTarifa, precioBruto, precioNeto))
+                        productList.add(Producto(dto, idArticulo, idPreciosVenta, idTarifa, precioBruto, precioNeto))
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
