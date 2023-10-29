@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/departamentoImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/imagen_dummie"></ImageView> <!-- Puedes definir una imagen predeterminada aquí -->
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/departamentoNombreTextView"
@@ -20,3 +20,26 @@
         android:textColor="@android:color/black" />
 
 </LinearLayout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="wrap_content"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:padding="16dp">-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/departamentoImageView"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        android:src="@drawable/imagen_dummie"></ImageView> &lt;!&ndash; Puedes definir una imagen predeterminada aquí &ndash;&gt;-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/departamentoNombreTextView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:textColor="@android:color/black" />-->
+
+    <!--</LinearLayout>-->

@@ -27,8 +27,8 @@ class DepartamentosMain : AppCompatActivity() {
         // Recuperar el token para usaro en las consultas
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
-        val url = "http://192.168.1.5:3000/departamentos" //German
-        //val url = "http://192.168.56.1:3000/perfils/" // Juan M
+//        val url = "http://192.168.1.5:3000/departamentos" //German
+        val url = "http://192.168.56.1:3000/perfils/" // Juan M
 
         // Realizar la solicitud para obtener la lista de departamentos
         val client = OkHttpClient()
@@ -62,6 +62,7 @@ class DepartamentosMain : AppCompatActivity() {
                             object : TypeToken<List<Departamento>>() {}.type
                         )
 
+
                         // Crear y configurar el adaptador
                         val adapter = DepartamentoAdapter(this@DepartamentosMain, departamentos)
 
@@ -87,28 +88,3 @@ class DepartamentosMain : AppCompatActivity() {
     }
 }
 
-
-
-//        val gridLayout = findViewById<GridLayout>(R.id.gridLayout) // Obtén la referencia al GridLayout desde el XML
-//        val listaDeArticulos: List<Articulo> = obtenerListaDeArticulos() // Obtén tu lista de objetos Articulo
-//
-//        for (articulo in listaDeArticulos) {
-//            val imageButton = ImageButton(this)
-//            imageButton.layoutParams = GridLayout.LayoutParams() // Crea parámetros de diseño para el botón
-//            imageButton.layoutParams.width = GridLayout.LayoutParams.WRAP_CONTENT
-//            imageButton.layoutParams.height = GridLayout.LayoutParams.WRAP_CONTENT
-//
-//            // Carga la imagen desde la URL (usando una biblioteca como Picasso o Glide) y colócala en el ImageButton
-//            Picasso.get().load(articulo.foto).into(imageButton)
-//
-//            val textView = TextView(this)
-//            textView.layoutParams = GridLayout.LayoutParams() // Crea parámetros de diseño para el TextView
-//            textView.layoutParams.width = GridLayout.LayoutParams.WRAP_CONTENT
-//            textView.layoutParams.height = GridLayout.LayoutParams.WRAP_CONTENT
-//            textView.text = articulo.descripcion // Establece el nombre del artículo en el TextView
-//            textView.gravity = Gravity.CENTER // Alinea el texto al centro
-//
-//            // Agrega el ImageButton y el TextView al GridLayout
-//            gridLayout.addView(imageButton)
-//            gridLayout.addView(textView)
-//        }
