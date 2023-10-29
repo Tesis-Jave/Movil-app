@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.javepuntos.model.Departamento
 import com.example.javepuntos.R
+import com.squareup.picasso.Picasso
 
 class DepartamentoAdapter(private val context: Context, private val departamentos: List<Departamento>) : BaseAdapter() {
     override fun getCount(): Int {
@@ -34,14 +35,20 @@ class DepartamentoAdapter(private val context: Context, private val departamento
         val departamentoNombreTextView: TextView = view.findViewById(R.id.departamentoNombreTextView)
         // Cargar la imagen desde la URL utilizando Glide o Picasso
 
-        Handler(Looper.getMainLooper()).post {
-            Glide.with(context)
-                .load(departamento.url)
-                .apply(RequestOptions()
-                    .placeholder(R.drawable.imagen_dummie)
-                    .error(R.drawable.error))
-                .into(departamentoImageView)
-        }
+//        Handler(Looper.getMainLooper()).post {
+//            Glide.with(context)
+//                .load(departamento.url)
+//                .apply(RequestOptions()
+//                    .placeholder(R.drawable.imagen_dummie)
+//                    .error(R.drawable.error))
+//                .into(departamentoImageView)
+//        }
+        Picasso.get()
+            .load(departamento.url)
+            .placeholder(R.drawable.imagen_dummie)
+            .error(R.drawable.error)
+            .into(departamentoImageView)
+
 
 
         departamentoNombreTextView.text = departamento.descripcion
