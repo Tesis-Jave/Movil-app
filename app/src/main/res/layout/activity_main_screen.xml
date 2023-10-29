@@ -34,8 +34,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:background="@color/white"
+                    android:src="@drawable/catalogo" />
 
                 <TextView
                     android:id="@+id/textProducto"
@@ -60,9 +60,9 @@
                     android:id="@+id/imagePromocion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
                     android:layout_weight="1"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/premios" />
 
                 <TextView
                     android:id="@+id/textPromocion"
@@ -94,8 +94,9 @@
                     android:id="@+id/imagePuntos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:layout_weight="1"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/puntos" />
 
                 <TextView
                     android:id="@+id/textProducts"
@@ -120,9 +121,9 @@
                     android:id="@+id/imageCafeteria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
                     android:layout_weight="1"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/cafeterias" />
 
                 <TextView
                     android:id="@+id/textCafeteria"
