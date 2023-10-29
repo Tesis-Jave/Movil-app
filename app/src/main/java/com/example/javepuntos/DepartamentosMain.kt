@@ -28,7 +28,7 @@ class DepartamentosMain : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
 
-        val url = "http://$BASE_URL/perfils/"
+        val url = "http://$BASE_URL/departamentos/"
 
         // Realizar la solicitud para obtener la lista de departamentos
         val client = OkHttpClient()
