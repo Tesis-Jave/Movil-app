@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("com.google.code.gson:gson:2.8.9")
-
+    implementation ("com.android.volley:volley:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     testImplementation("junit:junit:4.13.2")
