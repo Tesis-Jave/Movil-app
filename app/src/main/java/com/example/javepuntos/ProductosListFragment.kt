@@ -1,3 +1,4 @@
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,19 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import com.example.javepuntos.BASE_URL
 import com.example.javepuntos.R
 import com.example.javepuntos.model.Producto
+import okhttp3.OkHttpClient
 import org.json.JSONArray
 import org.json.JSONException
 
 class ProductosListFragment : Fragment() {
-    private val productList = ArrayList<Producto>()
+    val productList = ArrayList<Producto>()
     private lateinit var listView: ListView
+    private var productID: Int = 0 // Variable para almacenar el ID del producto
+    val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
+    val token = sharedPreferences.getString("TOKEN_KEY", null)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +33,7 @@ class ProductosListFragment : Fragment() {
 
         listView = view.findViewById(R.id.productListView)
 
+        productID = arguments?.getInt("id_articulo", 0) ?: 0
         // Llama a la función para cargar los datos de LoopBack
         loadProductData()
 
@@ -34,11 +41,18 @@ class ProductosListFragment : Fragment() {
     }
 
     private fun loadProductData() {
-        val url = "http://192.168.1.40:3000/preciosventas"
+        val url = "http://$BASE_URL/precioventas/$productID"
+
+        // Realizar la solicitud para obtener la lista de departamentos
+        val client = OkHttpClient()
+        val request = okhttp3.Request.Builder()
+            .url(url)
+            .header("Authorization", "Bearer $token")
+            .build()
 
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, url, null,
-            Response.Listener<JSONArray> { response ->
+            { response ->
                 for (i in 0 until response.length()) {
                     try {
                         val product = response.getJSONObject(i)
@@ -60,7 +74,7 @@ class ProductosListFragment : Fragment() {
                 // Asignar el adaptador al ListView
                 listView.adapter = adapter
             },
-            Response.ErrorListener { error ->
+            { error ->
                 Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         )

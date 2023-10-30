@@ -3,6 +3,7 @@ package com.example.javepuntos
 import DepartamentoAdapter
 import android.content.Context
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -71,11 +72,23 @@ class DepartamentosMain : AppCompatActivity() {
                         val gridLayout: GridLayout = findViewById(R.id.gridLayout)
 
                         val columnas = 2
-                        for (i in 0 until adapter.count) {
+                        val totalItems = adapter.count
+
+                        for (i in 0 until totalItems) {
                             val view = adapter.getView(i, null, gridLayout)
                             val params = GridLayout.LayoutParams()
-                            params.columnSpec = GridLayout.spec(i%columnas)
-                            params.rowSpec = GridLayout.spec(i/columnas)
+
+                            // Calcular la columna y fila en función de las columnas
+                            val columna = i % columnas
+                            val fila = i / columnas
+
+                            // Alinea el elemento en el centro de su celda
+                            params.setGravity(Gravity.CENTER)
+
+                            // Establece las especificaciones de columna y fila
+                            params.columnSpec = GridLayout.spec(columna)
+                            params.rowSpec = GridLayout.spec(fila)
+
                             view.layoutParams = params
                             gridLayout.addView(view)
                         }

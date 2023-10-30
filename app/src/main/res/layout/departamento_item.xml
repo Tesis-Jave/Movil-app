@@ -8,14 +8,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
+        android:layout_gravity="center_vertical"
         android:gravity="center">
 
         <ImageView
             android:id="@+id/departamentoImageView"
-            android:layout_width="50dp"
+            android:layout_width="70dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            android:layout_column="0" />
+            android:layout_gravity="center_vertical|center_horizontal" />
+            <!--android:layout_column="0"-->
 
         <TextView
             android:id="@+id/departamentoNombreTextView"
@@ -23,7 +25,10 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:layout_column="1" />
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:ellipsize="end"
+            android:maxLines="1" />
+           <!-- android:layout_column="1"-->
 
     </LinearLayout>
 

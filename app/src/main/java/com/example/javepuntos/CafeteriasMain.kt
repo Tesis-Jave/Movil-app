@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -79,12 +80,28 @@ class CafeteriasMain : AppCompatActivity() {
 
             for (i in 0 until adapter.count) {
                 val cafeteriaView = adapter.getView(i, null, gridLayout)
+
+                // Crea parámetros para la vista
                 val params = GridLayout.LayoutParams()
-                params.columnSpec = GridLayout.spec(i % columnCount)
-                params.rowSpec = GridLayout.spec(i / columnCount)
+
+                // Calcula la columna y fila en función de las columnas
+                val columna = i % columnCount
+                val fila = i / columnCount
+
+                // Alinea el elemento en el centro de su celda
+                params.setGravity(Gravity.CENTER)
+
+                // Establece las especificaciones de columna y fila
+                params.columnSpec = GridLayout.spec(columna)
+                params.rowSpec = GridLayout.spec(fila)
+
+                // Establece los parámetros en la vista
                 cafeteriaView.layoutParams = params
+
+                // Agrega la vista al GridLayout
                 gridLayout.addView(cafeteriaView)
             }
+
         }
 
     }
