@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Color de fondo blanco -->
+    <stroke
+        android:color="@color/vinoTinto"
+        android:width="1dp"
+    />
+</shape>

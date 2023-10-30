@@ -25,11 +25,24 @@ class MainScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonProductos.setOnClickListener {
-        // se lanza el fragmento
-        //  findNavController().navigate(R.id.aproductos)
-            // Se lanza actividad nueva para los productos
+            // Se lanza actividad nueva para los departamentos
             val intent = Intent(requireContext(), DepartamentosMain::class.java)
             startActivity(intent)
+        }
+        binding.buttonCafeterias.setOnClickListener{
+            // Se lanza actividad nueva para las cafeterias
+            val intent = Intent(requireContext(), CafeteriasMain::class.java)
+            startActivity(intent)
+        }
+        binding.buttonPromocion.setOnClickListener{
+            // Se lanza actividad nueva para las premios
+//            val intent = Intent(requireContext(), CafeteriasMain::class.java)
+//            startActivity(intent)
+        }
+        binding.buttonPuntos.setOnClickListener{
+            // Se lanza actividad nueva para los puntos
+//            val intent = Intent(requireContext(), CafeteriasMain::class.java)
+//            startActivity(intent)
         }
     }
 
