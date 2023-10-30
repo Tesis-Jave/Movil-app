@@ -11,6 +11,15 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityMainBinding
+import android.content.Context
+import android.content.Intent
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.Response
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,16 +37,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val token = intent.getStringExtra("response_data")
-        println(token)
+        val id = intent.getStringExtra("Identificador")
 
-//        setSupportActionBar(binding.toolbar)
-//
-//        val navController = findNavController(R.id.nav_host_fragment_content_main)
-//        appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navController.addOnDestinationChangedListener { _, _, _ ->
-//            supportActionBar?.title = "Jave Puntos"
-//        }
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
         }
         supportActionBar?.title = "Jave Puntos"
 
+        binding.perfilPuntos.setOnClickListener {
+            val intent = Intent(this@MainActivity,Perfil_Puntos::class.java)
+            intent.putExtra("response_data",token)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

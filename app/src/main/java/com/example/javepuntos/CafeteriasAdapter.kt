@@ -47,6 +47,6 @@ class CafeteriasAdapter(private val context: Context, private val cafeterias: Li
             // accion de cuando se interactue con la imagen de la cafeteia aca
         }
 
-        return view!!
+        return view
     }
 }

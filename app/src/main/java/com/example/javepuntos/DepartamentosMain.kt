@@ -51,9 +51,8 @@ class DepartamentosMain : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 // Procesar la respuesta del servidor
+                println("entra a onresponse")
                 runOnUiThread {
-
-                    println("entra a onresponse")
                     if (response.isSuccessful) {
                         println("entra a if de respuesta")
                         val responseData = response.body()?.string()
@@ -75,14 +74,12 @@ class DepartamentosMain : AppCompatActivity() {
                             gridLayout.addView(view)
                         }
                     } else {
-                        runOnUiThread {
-                            Toast.makeText(
-                                applicationContext,
-                                "Error al obtener departamentos",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            println("fallo al cargar los datos")
-                        }
+                        Toast.makeText(
+                            applicationContext,
+                            "Error al obtener departamentos",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        println("fallo al cargar los datos")
                     }
                 }
             }

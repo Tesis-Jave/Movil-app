@@ -26,9 +26,11 @@
             <GridLayout
                 android:id="@+id/gridLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="1"
-                android:layout_centerInParent="true"
+                android:layout_height="match_parent"
+                android:numColumns="1"
+                android:horizontalSpacing="16dp"
+                android:verticalSpacing="16dp"
+                android:padding="16dp"
                />
 
         </LinearLayout>

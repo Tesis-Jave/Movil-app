@@ -1,6 +1,8 @@
 package com.example.javepuntos
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.GridLayout
 import android.widget.Toast
@@ -16,6 +18,12 @@ import okhttp3.Response
 import java.io.IOException
 
 class CafeteriasMain : AppCompatActivity() {
+
+    override fun onDestroy() {
+        // Detener recursos de red, hilos u otros recursos aquí
+        super.onDestroy()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cafeterias_main)
@@ -26,62 +34,59 @@ class CafeteriasMain : AppCompatActivity() {
 
         val url = "http://$BASE_URL/cafeterias/"
 
-        // Realizar la solicitud para obtener la lista de departamentos
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url(url)
-            .header("Authorization", "Bearer $token")
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                // Manejar errores de conexión
-                runOnUiThread {
-                    println("FALLO CON EL ENDPOINT")
-                    Toast.makeText(applicationContext, "Error al obtener cafeterias", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-
-            println("entra a onresponse Cafeteria")
-            // Procesar la respuesta del servidor
-                runOnUiThread {
-                    if (response.isSuccessful) {
-                        println("Response satisfactoria")
-                        val responseData = response.body()?.string()
-
-                        val gson = Gson()
-                        val cafeterias: List<Cafeteria> = gson.fromJson(
-                            responseData,
-                            object : TypeToken<List<Cafeteria>>() {}.type
-                        )
-                        println(cafeterias)
-
-                        val adapter = CafeteriasAdapter(this@CafeteriasMain, cafeterias)
-
-                        val gridLayout: GridLayout = findViewById(R.id.gridLayout)
-
-                            for (i in 0 until adapter.count){
-                                val view = adapter.getView(i, null, gridLayout)
-                                gridLayout.addView(view)
-                            }
-
-
-                    }else {
-                        runOnUiThread {
-                            Toast.makeText(
-                                applicationContext,
-                                "Error al obtener Cafeterias",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            println("fallo al cargar los datos")
-                        }
-                    }
-
-                }
-            }
-        })
+        // Llamar a un AsyncTask para realizar la solicitud de red
+        val networkTask = NetworkTask(this)
+        networkTask.execute(url, token)
     }
- }
+
+    @SuppressLint("StaticFieldLeak")
+    private inner class NetworkTask(private val context: Context) : AsyncTask<String, Void, List<Cafeteria>>() {
+        override fun doInBackground(vararg params: String?): List<Cafeteria> {
+            val url = params[0]
+            val token = params[1]
+
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(url)
+                .header("Authorization", "Bearer $token")
+                .build()
+
+            try {
+                val response = client.newCall(request).execute()
+                if (response.isSuccessful) {
+                    val responseData = response.body()?.string()
+                    println(responseData)
+                    val gson = Gson()
+                    return gson.fromJson(
+                        responseData,
+                        object : TypeToken<List<Cafeteria>>() {}.type
+                    )
+
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            return emptyList()
+        }
+
+        override fun onPostExecute(result: List<Cafeteria>) {
+            // Actualizar la interfaz de usuario con los datos
+            val gridLayout: GridLayout = findViewById(R.id.gridLayout)
+            val adapter = CafeteriasAdapter(context, result)
+
+            val columnCount = 2 // Puedes ajustar el número de columnas según tus necesidades
+
+            for (i in 0 until adapter.count) {
+                val cafeteriaView = adapter.getView(i, null, gridLayout)
+                val params = GridLayout.LayoutParams()
+                params.columnSpec = GridLayout.spec(i % columnCount)
+                params.rowSpec = GridLayout.spec(i / columnCount)
+                cafeteriaView.layoutParams = params
+                gridLayout.addView(cafeteriaView)
+            }
+        }
+
+    }
+}
 
