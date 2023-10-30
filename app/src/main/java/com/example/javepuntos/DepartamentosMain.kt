@@ -69,8 +69,14 @@ class DepartamentosMain : AppCompatActivity() {
 
                         // Obtener el GridLayout y establecer el adaptador
                         val gridLayout: GridLayout = findViewById(R.id.gridLayout)
+
+                        val columnas = 2
                         for (i in 0 until adapter.count) {
                             val view = adapter.getView(i, null, gridLayout)
+                            val params = GridLayout.LayoutParams()
+                            params.columnSpec = GridLayout.spec(i%columnas)
+                            params.rowSpec = GridLayout.spec(i/columnas)
+                            view.layoutParams = params
                             gridLayout.addView(view)
                         }
                     } else {
