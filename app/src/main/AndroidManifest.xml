@@ -21,7 +21,7 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="true"
-            android:label="@string/title_activity_profile"
+            android:label="@string/app_name"
             android:theme="@style/Theme.JavePuntos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,8 +38,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.JavePuntos"></activity>
+            android:theme="@style/Theme.JavePuntos"/>
+        <activity android:name=".Perfil_Puntos"
+            android:exported="false"
+            android:theme="@style/Theme.JavePuntos"/>
+
     </application>
 
 </manifest>
