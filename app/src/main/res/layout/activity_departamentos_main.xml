@@ -9,6 +9,13 @@
     <!-- Barra superior con flecha de retroceso -->
     <include layout="@layout/toolbar"></include>
 
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/toolbarBottom"/>
+
     <!-- Agrega un NestedScrollView para permitir el desplazamiento -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

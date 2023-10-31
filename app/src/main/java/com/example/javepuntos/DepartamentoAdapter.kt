@@ -1,12 +1,14 @@
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.javepuntos.ArticulosActivity
 import com.example.javepuntos.R
 import com.example.javepuntos.model.Departamento
 import com.squareup.picasso.Picasso
@@ -32,7 +34,7 @@ class DepartamentoAdapter(private val context: Context, private val departamento
         val view = LayoutInflater.from(context).inflate(R.layout.departamento_item, parent, false)
 
         // Configurar la vista con datos del departamento
-        val departamentoImageView: ImageView = view.findViewById(R.id.departamentoImageView)
+        val departamentoImageButton: ImageView = view.findViewById(R.id.departamentoImageButton)
         val departamentoNombreTextView: TextView = view.findViewById(R.id.departamentoNombreTextView)
 
         // Cargar la imagen desde la URL
@@ -40,10 +42,25 @@ class DepartamentoAdapter(private val context: Context, private val departamento
             .load(departamento.url)
             .placeholder(R.drawable.imagen_dummie)
             .error(R.drawable.error)
-            .into(departamentoImageView)
+            .into(departamentoImageButton)
 
         departamentoNombreTextView.text = departamento.descripcion
+        departamentoImageButton.setOnClickListener {
+            println("clic en la imagen")
+            val depto_id = departamento.idDpto
+
+            // Crear un Intent para iniciar la ArticulosActivity
+            val intent = Intent(context, ArticulosActivity::class.java)
+
+            // Agregar el idDepartamento como extra al Intent
+            intent.putExtra("idDepartamento", depto_id)
+
+            // Iniciar la actividad
+            context.startActivity(intent)
+        }
+
         view.setOnClickListener {
+            println("entra al onclick")
             // Manejar el clic en el departamento aquí
 
         }
