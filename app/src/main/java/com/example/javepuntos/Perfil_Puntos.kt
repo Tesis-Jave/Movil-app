@@ -136,7 +136,7 @@ class Perfil_Puntos : AppCompatActivity() {
         }
 
         binding.historial.setOnClickListener {
-            
+
             intent = Intent(this,Historial::class.java)
             intent.putExtra("response_data",token)
             intent.putExtra("id_cliente",idCliente)

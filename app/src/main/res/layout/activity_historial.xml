@@ -5,5 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Historial">
+    <!-- Barra superior con flecha de retroceso -->
+    <include layout="@layout/toolbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:baselineAligned="false">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+
+        <ListView
+            android:id="@+id/listViewTransacciones"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="@android:color/darker_gray"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <!-- Barra inferior con botones -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vinoTinto"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <!-- El resto de tu contenido de la barra inferior -->
+    </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
