@@ -12,7 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        app:layout_constraintBottom_toTopOf="@id/toolbarBottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,14 +33,63 @@
 
     </LinearLayout>
 
-    <!-- Barra inferior con botones -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarBottom"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/vinoTinto"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <!-- El resto de tu contenido de la barra inferior -->
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/listViewTransacciones"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <!-- Linear Layout horizontal para los botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botones en la barra inferior -->
+            <ImageButton
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/enviar"
+                android:background="@drawable/botones"/>
+
+            <ImageButton
+                android:id="@+id/perfilPuntos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"/>
+
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paper"
+                android:layout_toEndOf="@id/button2"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"/>
+
+            <ImageButton
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/map"
+                android:layout_toEndOf="@id/button3"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/botones"/>
+        </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
