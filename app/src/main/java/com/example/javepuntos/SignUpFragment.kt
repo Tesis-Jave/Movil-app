@@ -52,25 +52,26 @@ class SignUpFragment : Fragment() {
             findNavController().navigate(R.id.volver)
         }
         binding.buttonCrearCuenta.setOnClickListener {
-            val url = "http://$BASE_URL/perfils"
-            val json = JSONObject()
-            json.put("usuario", binding.usernameCampo.text.toString())
-            json.put("password", binding.passwordCampo.text.toString())
-            json.put("nombre", binding.nameCampo.text.toString())
-            json.put("cedula", binding.cedulaCampo.text.toString().toInt())
-            json.put("cargo", "Cliente")
-            json.put("admin", false)
 
-            val client = OkHttpClient()
+            val urlC = "$BASE_URL/clientes"
+            val jsonC = JSONObject()
+            jsonC.put("nombreCliente",binding.nameCampo.text.toString())
+            jsonC.put("nombreComercial",binding.nameCampo.text.toString())
+            jsonC.put("cif",binding.cedulaCampo.text.toString().toBigInteger())
+            jsonC.put("direccion1",binding.addressCampo.text.toString())
+            jsonC.put("telefono1",binding.phoneCampo.text.toString().toBigInteger())
+            jsonC.put("e_mail",binding.emailCampo.text.toString())
+            jsonC.put("tipoCliente",1)
 
-            val requestBody = RequestBody.create(MediaType.parse("application/json"), json.toString())
+            val clientC = OkHttpClient()
 
-            val request = Request.Builder()
-                .url(url)
-                .post(requestBody)
+            val requestBodyC = RequestBody.create(MediaType.parse("application/json"),jsonC.toString())
+            val requestC = Request.Builder()
+                .url(urlC)
+                .post(requestBodyC)
                 .build()
 
-            client.newCall(request).enqueue(object : Callback {
+            clientC.newCall(requestC).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     // Manejo de errores en caso de que la solicitud falle
                     println(e)
@@ -78,30 +79,64 @@ class SignUpFragment : Fragment() {
 
                 override fun onResponse(call: Call, response: Response) {
                     if (response.isSuccessful) {
-                        // Procesa la respuesta exitosa aquí
-                        val responseData = response.body()?.string()
-                        // Almacena el token en SharedPreferences
-                        val gson = Gson()
-                        val tokenResponse: TokenResponse = gson.fromJson(responseData, object : TypeToken<TokenResponse>() {}.type)
+                        val url = "$BASE_URL/perfils"
+                        val json = JSONObject()
+                        json.put("usuario", binding.usernameCampo.text.toString())
+                        json.put("password", binding.passwordCampo.text.toString())
+                        json.put("nombre", binding.nameCampo.text.toString())
+                        json.put("cedula", binding.cedulaCampo.text.toString().toInt())
+                        json.put("cargo", "Cliente")
+                        json.put("admin", false)
 
-                        val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putString("TOKEN_KEY", tokenResponse.token)
-                        editor.apply()
+                        val client = OkHttpClient()
+
+                        val requestBody = RequestBody.create(MediaType.parse("application/json"), json.toString())
+
+                        val request = Request.Builder()
+                            .url(url)
+                            .post(requestBody)
+                            .build()
+
+                        client.newCall(request).enqueue(object : Callback {
+                            override fun onFailure(call: Call, e: IOException) {
+                                // Manejo de errores en caso de que la solicitud falle
+                                println(e)
+                            }
+
+                            override fun onResponse(call: Call, response: Response) {
+                                if (response.isSuccessful) {
+                                    // Procesa la respuesta exitosa aquí
+                                    val responseData = response.body()?.string()
+                                    // Almacena el token en SharedPreferences
+                                    val gson = Gson()
+                                    val tokenResponse: TokenResponse = gson.fromJson(responseData, object : TypeToken<TokenResponse>() {}.type)
+
+                                    val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
+                                    val editor = sharedPreferences.edit()
+                                    editor.putString("TOKEN_KEY", tokenResponse.token)
+                                    editor.apply()
 
 
-                        val intent = Intent(context, MainActivity::class.java)
-                        intent.putExtra("response_data", responseData)
-                        startActivity(intent)
-                        // Puedes mostrar la respuesta en tu interfaz de usuario
+                                    val intent = Intent(context, MainActivity::class.java)
+                                    intent.putExtra("response_data", responseData)
+                                    startActivity(intent)
+                                    // Puedes mostrar la respuesta en tu interfaz de usuario
+                                } else {
+                                    println("Error")
+
+                                    mostrarAlerta("Credenciales incorrectas")
+                                    // Manejo de errores en caso de que la respuesta no sea exitosa
+                                }
+                            }
+                        })
                     } else {
                         println("Error")
-
-                        mostrarAlerta("Credenciales incorrectas")
-                        // Manejo de errores en caso de que la respuesta no sea exitosa
+                        println("Error al crear el cliente")
                     }
                 }
             })
+
+
         }
 
         return binding.root

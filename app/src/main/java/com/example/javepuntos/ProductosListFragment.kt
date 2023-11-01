@@ -41,7 +41,7 @@ class ProductosListFragment : Fragment() {
     }
 
     private fun loadProductData() {
-        val url = "http://$BASE_URL/precioventas/$productID"
+        val url = "$BASE_URL/precioventas/$productID"
 
         // Realizar la solicitud para obtener la lista de departamentos
         val client = OkHttpClient()

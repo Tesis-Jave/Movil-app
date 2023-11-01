@@ -13,6 +13,9 @@ import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityMainBinding
 import android.content.Context
 import android.content.Intent
+import com.example.javepuntos.model.TokenResponse
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
@@ -36,8 +39,12 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        val token = intent.getStringExtra("response_data")
-        val id = intent.getStringExtra("Identificador")
+        val gson = Gson()
+        val tokenResponse: TokenResponse = gson.fromJson(intent.getStringExtra("response_data"), object : TypeToken<TokenResponse>() {}.type)
+
+        val token = tokenResponse.token
+        val id = tokenResponse.id
+        println(id)
 
 
         binding.fab.setOnClickListener { view ->
@@ -49,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         binding.perfilPuntos.setOnClickListener {
             val intent = Intent(this@MainActivity,Perfil_Puntos::class.java)
             intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",id)
             startActivity(intent)
         }
     }

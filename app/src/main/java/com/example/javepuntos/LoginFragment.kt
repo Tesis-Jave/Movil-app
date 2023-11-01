@@ -56,8 +56,9 @@
             }
 
             binding.buttonLogin.setOnClickListener {
+
     //
-                val url = "http://$BASE_URL/perfils/login?usuario=${binding.user.text.toString()}&password=${binding.password.text.toString()}"
+                val url = "$BASE_URL/perfils/login?usuario=${binding.user.text.toString()}&password=${binding.password.text.toString()}"
                 val client = OkHttpClient()
 
                 val request = Request.Builder()
@@ -76,21 +77,18 @@
                         if (response.isSuccessful) {
                             // Procesa la respuesta exitosa aquí
                             val responseData = response.body()?.string()
+                            println(responseData)
                             // Almacena el token en SharedPreferences
                             val gson = Gson()
                             val tokenResponse: TokenResponse = gson.fromJson(responseData, object : TypeToken<TokenResponse>() {}.type)
-                            val id = tokenResponse.id
 
                             val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
                             val editor = sharedPreferences.edit()
                             editor.putString("TOKEN_KEY", tokenResponse.token)
                             editor.apply()
 
-
-
                             val intent = Intent(context, MainActivity::class.java)
                             intent.putExtra("response_data", responseData)
-                            intent.putExtra("Identificador",id)
                             startActivity(intent)
                             // Puedes mostrar la respuesta en tu interfaz de usuario
                         } else {

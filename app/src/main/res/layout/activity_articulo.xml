@@ -7,20 +7,25 @@
     tools:context=".ArticulosActivity">
     <!-- Barra superior con flecha de retroceso -->
     <include layout="@layout/toolbar"></include>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/toolbar"
-    android:layout_above="@id/toolbarBottom">
 
-    <ListView
-        android:id="@+id/listViewArticulos"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"/>
-</LinearLayout>
+        android:layout_below="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/toolbarBottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:baselineAligned="false">
+
+        <ListView
+            android:id="@+id/listViewArticulos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="@android:color/darker_gray" />
+
+    </LinearLayout>
 
     <!-- Barra inferior con botones -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -28,7 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:background="@color/vinoTinto">
+        android:background="@color/vinoTinto"
+        app:layout_constraintTop_toBottomOf="@id/listViewArticulos"
+        app:layout_constraintBottom_toBottomOf="parent">
         <!-- El resto de tu contenido de la barra inferior -->
     </com.google.android.material.appbar.MaterialToolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>

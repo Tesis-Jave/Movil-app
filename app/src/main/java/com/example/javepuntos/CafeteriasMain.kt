@@ -33,7 +33,7 @@ class CafeteriasMain : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
 
-        val url = "http://$BASE_URL/cafeterias/"
+        val url = "$BASE_URL/cafeterias/"
 
         // Llamar a un AsyncTask para realizar la solicitud de red
         val networkTask = NetworkTask(this)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.javepuntos.databinding.ActivityArticuloBinding
 import com.example.javepuntos.model.Articulos
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -15,28 +16,28 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
+
 class ArticulosActivity : AppCompatActivity() {
 
     private lateinit var articulosAdapter: ArticulosAdapter
     private lateinit var listView: ListView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityArticuloBinding
+
+
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_articulo) // Asegúrate de que estás inflando el layout correcto aquí
+         // Asegúrate de que estás inflando el layout correcto aquí
 
-        listView = findViewById(R.id.listViewArticulos)
-        articulosAdapter = ArticulosAdapter(this, ArrayList())
-        listView.adapter = articulosAdapter
-
+        binding = ActivityArticuloBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val idDepartamento = intent.getIntExtra("idDepartamento", -1)
-        obtenerArticulosPorDepartamento(idDepartamento)
-    }
 
-    private fun obtenerArticulosPorDepartamento(idDepartamento: Int) {
+
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
 
-        val url = "http://$BASE_URL/articulos-por-departamento/$idDepartamento"
+        val url = "$BASE_URL/articulos-por-departamento/$idDepartamento"
 
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -47,7 +48,7 @@ class ArticulosActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
-                    println("FALLO CON EL ENDPOINT")
+                    println("FALLO CON EL ENDPOINT1213")
                     Toast.makeText(applicationContext, "Error al obtener artículos", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -60,18 +61,16 @@ class ArticulosActivity : AppCompatActivity() {
                     runOnUiThread {
                         // Parsear el JSON y actualizar la interfaz de usuario
                         val gson = Gson()
-                        val articulos: List<Articulos> = gson.fromJson(
+                        val lista: List<Articulos> = gson.fromJson(
                             responseData,
                             object : TypeToken<List<Articulos>>() {}.type
                         )
-                        println(articulos)
 
-                        // Crear el adaptador con los nuevos datos
-                        articulosAdapter = ArticulosAdapter(this@ArticulosActivity, articulos)
-
-                        // Establecer el adaptador en el ListView existente
+                        listView = binding.listViewArticulos
+                        articulosAdapter = ArticulosAdapter(this@ArticulosActivity, lista)
                         listView.adapter = articulosAdapter
 
+                        println(lista)
                         // Por ejemplo, actualizar el adaptador de la lista con los nuevos datos
                     }
                 } else {
@@ -79,5 +78,9 @@ class ArticulosActivity : AppCompatActivity() {
                 }
             }
         })
+
+
+
+
     }
 }
