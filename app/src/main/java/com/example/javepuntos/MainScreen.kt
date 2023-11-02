@@ -39,11 +39,7 @@ class MainScreen : Fragment() {
 //            val intent = Intent(requireContext(), CafeteriasMain::class.java)
 //            startActivity(intent)
         }
-        binding.buttonPuntos.setOnClickListener{
-            // Se lanza actividad nueva para los puntos
-//            val intent = Intent(requireContext(), CafeteriasMain::class.java)
-//            startActivity(intent)
-        }
+
     }
 
     override fun onDestroyView() {
