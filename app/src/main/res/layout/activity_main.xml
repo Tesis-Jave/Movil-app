@@ -63,7 +63,7 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/button4"
+                android:id="@+id/botonMapa"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/map"

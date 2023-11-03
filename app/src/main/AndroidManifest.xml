@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MapaCafeteriasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapaCafeteriaActivity"
+            android:exported="false" />
+        <activity
             android:name=".Historial"
             android:exported="false" />
         <activity

@@ -1,28 +1,20 @@
 package com.example.javepuntos
 
+import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityMainBinding
-import android.content.Context
-import android.content.Intent
 import com.example.javepuntos.model.TokenResponse
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.Response
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,7 +51,18 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("idCliente",id)
             startActivity(intent)
         }
+        binding.botonMapa.setOnClickListener{
+            val intent = Intent(this, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
     }
+    override fun onResume() {
+        super.onResume()
+        // Forzar la orientación vertical al volver a esta actividad
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
