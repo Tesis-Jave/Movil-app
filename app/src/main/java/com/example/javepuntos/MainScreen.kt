@@ -39,6 +39,11 @@ class MainScreen : Fragment() {
 //            val intent = Intent(requireContext(), CafeteriasMain::class.java)
 //            startActivity(intent)
         }
+//        binding.buttonPromocion.setOnClickListener{
+//            // Se lanza actividad nueva para las premios
+////            val intent = Intent(requireContext(), CafeteriasMain::class.java)
+////            startActivity(intent)
+//        }
 
     }
 

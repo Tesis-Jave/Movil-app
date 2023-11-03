@@ -27,7 +27,6 @@ class ArticulosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-         // Asegúrate de que estás inflando el layout correcto aquí
 
         binding = ActivityArticuloBinding.inflate(layoutInflater)
         setContentView(binding.root)

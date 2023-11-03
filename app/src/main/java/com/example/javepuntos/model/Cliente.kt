@@ -1,7 +1,7 @@
 package com.example.javepuntos.model
 import com.google.gson.annotations.SerializedName
 
-data class cliente (
+data class Cliente (
     @SerializedName("id_cliente") val id_cliente: Int,
     @SerializedName("nombrecliente") val nombrecliente: String,
     @SerializedName("nombrecomercial") val nombrecomercial: String,

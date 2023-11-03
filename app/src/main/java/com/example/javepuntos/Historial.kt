@@ -1,16 +1,12 @@
 package com.example.javepuntos
 
-import android.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ActionMenuView
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import com.example.javepuntos.databinding.ActivityHistorialBinding
 import com.example.javepuntos.model.Tarjeta
 import com.example.javepuntos.model.Transaccion
-import com.example.javepuntos.model.cliente
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Call

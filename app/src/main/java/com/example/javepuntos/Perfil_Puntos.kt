@@ -3,14 +3,10 @@ package com.example.javepuntos
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.compose.ui.res.integerArrayResource
 import com.example.javepuntos.databinding.ActivityPerfilPuntosBinding
-import com.example.javepuntos.model.TokenResponse
-import com.example.javepuntos.model.cliente
+import com.example.javepuntos.model.Cliente
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Call
@@ -60,7 +56,7 @@ class Perfil_Puntos : AppCompatActivity() {
                     val responseData = response.body()?.string()
                     println(responseData)
                     // Procesa la respuesta exitosa aquí
-                    val clienteE: cliente = gson.fromJson(responseData, object : TypeToken<cliente>() {}.type)
+                    val clienteE: Cliente = gson.fromJson(responseData, object : TypeToken<Cliente>() {}.type)
 
                     if (clienteE != null) {
                         runOnUiThread {
