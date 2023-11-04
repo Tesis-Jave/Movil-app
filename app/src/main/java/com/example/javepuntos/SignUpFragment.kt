@@ -34,7 +34,9 @@ class SignUpFragment : Fragment() {
 
     private lateinit var birthDateCampo: EditText
 
-
+    public fun volver(){
+        findNavController().navigate(R.id.volver)
+    }
 
 
     override fun onCreateView(
@@ -55,13 +57,14 @@ class SignUpFragment : Fragment() {
 
             val urlC = "$BASE_URL/clientes"
             val jsonC = JSONObject()
-            jsonC.put("nombreCliente",binding.nameCampo.text.toString())
-            jsonC.put("nombreComercial",binding.nameCampo.text.toString())
+            jsonC.put("nombrecliente",binding.nameCampo.text.toString())
+            jsonC.put("nombrecomercial",binding.nameCampo.text.toString())
             jsonC.put("cif",binding.cedulaCampo.text.toString().toBigInteger())
             jsonC.put("direccion1",binding.addressCampo.text.toString())
             jsonC.put("telefono1",binding.phoneCampo.text.toString().toBigInteger())
             jsonC.put("e_mail",binding.emailCampo.text.toString())
-            jsonC.put("tipoCliente",1)
+            jsonC.put("tipocliente",1)
+            println(jsonC.toString())
 
             val clientC = OkHttpClient()
 
@@ -116,7 +119,6 @@ class SignUpFragment : Fragment() {
                                     editor.putString("TOKEN_KEY", tokenResponse.token)
                                     editor.apply()
 
-
                                     val intent = Intent(context, MainActivity::class.java)
                                     intent.putExtra("response_data", responseData)
                                     startActivity(intent)
@@ -132,9 +134,11 @@ class SignUpFragment : Fragment() {
                     } else {
                         println("Error")
                         println("Error al crear el cliente")
+                        println(response)
                     }
                 }
             })
+
 
 
         }

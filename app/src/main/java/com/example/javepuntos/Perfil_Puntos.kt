@@ -1,5 +1,6 @@
 package com.example.javepuntos
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -29,6 +30,9 @@ class Perfil_Puntos : AppCompatActivity() {
         val token1 = intent.getStringExtra("response_data")
 
         val idCliente = intent.getStringExtra("idCliente")
+        if (idCliente==null){
+            finish()
+        }
 
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
@@ -94,6 +98,7 @@ class Perfil_Puntos : AppCompatActivity() {
                 finish()
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     val gson = Gson()
@@ -102,13 +107,9 @@ class Perfil_Puntos : AppCompatActivity() {
                     // Procesa la respuesta exitosa aquí
                     val saldo: String = gson.fromJson(responseData, object : TypeToken<String>() {}.type)
 
-                    if (saldo != null) {
-                        runOnUiThread {
-                            binding.saldoTextView.text ="$saldo puntos"
+                    runOnUiThread {
+                        binding.saldoTextView.text ="$saldo puntos"
 
-                        }
-                    } else {
-                        println("No se encontraron clientes en la respuesta JSON")
                     }
 
                 } else {
