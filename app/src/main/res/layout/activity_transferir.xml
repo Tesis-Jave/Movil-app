@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/CantidadCampo"
-        android:text="@string/cedula"
+        android:text="cantidad"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/DescipcionText"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/DescripcionCampo"
-        android:text="@string/cedula"
+        android:text="descripcion"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -110,11 +110,25 @@
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ButtonEnviar"
         app:layout_constraintLeft_toRightOf="@id/DescipcionText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CantidadCampo"
         android:gravity="center"
+        />
+
+    <Button
+        android:id="@+id/ButtonEnviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Enviar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/DescripcionCampo"
+        android:backgroundTint="@color/naranjaLogo"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

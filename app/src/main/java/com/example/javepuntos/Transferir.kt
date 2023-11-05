@@ -4,22 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.javepuntos.databinding.ActivityTransferirBinding
-import com.example.javepuntos.model.Tarjeta
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 import okhttp3.Response
 import java.io.IOException
 import java.math.BigInteger
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.Date
 
 class Transferir : AppCompatActivity() {
 
     private lateinit var binding: ActivityTransferirBinding
+    private lateinit var id_cliente: String
+    private lateinit var token: String
 
     override fun onDestroy() {
         super.onDestroy()
@@ -27,48 +30,59 @@ class Transferir : AppCompatActivity() {
     }
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTransferirBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val id_cliente = intent.getStringExtra("id_cliente")
-        val token = intent.getStringExtra("response_data")
+        id_cliente = intent.getStringExtra("id_cliente").toString()
+        token = intent.getStringExtra("response_data").toString()
 
+        binding.ButtonEnviar.setOnClickListener {
 
-        var nombreDestinatario: String = binding.nombreCampo.text.toString()
-        var cedulaDestinatario: BigInteger = binding.CedulaCampo.text.toString().toBigInteger()
-        var cantidad: Int = binding.CantidadCampo.text.toString().toInt()
-        var descripcion: String = binding.DescripcionCampo.text.toString()
-        var id_tarjeta_destino:Int=0
-        var fecha: Date= Date.from(Instant.now())
+            var nombreDestinatario: String = binding.nombreCampo.text.toString()
+            var cedulaDestinatario: BigInteger = binding.CedulaCampo.text.toString().toBigInteger()
+            var cantidad: Int = binding.CantidadCampo.text.toString().toInt()
+            var descripcion: String = binding.DescripcionCampo.text.toString()
+            var id_tarjeta_destino: Int = 0
+            var fechaSF: Date = Date.from(Instant.now())
 
-        tarjetaDestino(cedulaDestinatario, token.toString()) { idTarjetaDestino ->
-            // Lógica para manejar idTarjetaDestino aquí
-            if (idTarjetaDestino != -1) {
-                // La llamada a la función fue exitosa, puedes usar idTarjetaDestino aquí
-                id_tarjeta_destino = idTarjetaDestino
-            } else {
-                // Manejar el error, por ejemplo, mostrar un mensaje de error
-                runOnUiThread {
-                    Toast.makeText(applicationContext, "El cliente al que desea enviar puntos no existe en el sistema", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+            // Definir el formato deseado (año-mes-día)
+            val formato = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
-        var tarjeta_cliente: Int
+            // Formatear la fecha en el formato deseado
+            val fecha = formato.format(fechaSF)
+            var tarjeta_cliente: Int
 
-        if (id_cliente != null) {
-            tarjetaOrigen(id_cliente, token.toString()) { idTarjetaOrigen ->
-                // Lógica para manejar idTarjetaDestino aquí
-                if (idTarjetaOrigen != -1) {
-                    // La llamada a la función fue exitosa, puedes usar idTarjetaDestino aquí
-                    tarjeta_cliente = idTarjetaOrigen
-                } else {
-                    // Manejar el error, por ejemplo, mostrar un mensaje de error
-                    runOnUiThread {
-                        Toast.makeText(applicationContext, "El cliente al que desea enviar puntos no existe en el sistema", Toast.LENGTH_SHORT).show()
+            tarjetaDestino(cedulaDestinatario, token.toString()) { idTarjetaDestino ->
+                if (idTarjetaDestino != -1) {
+                    id_tarjeta_destino = idTarjetaDestino
+                    println("Exito en tarjeta destino")
+                    println(id_tarjeta_destino)
+
+                    tarjetaOrigen(id_cliente, token.toString()) { idTarjetaOrigen ->
+                        if (idTarjetaOrigen != -1) {
+                            tarjeta_cliente = idTarjetaOrigen
+                            println("Exito en tarjeta origen")
+                            println(tarjeta_cliente)
+
+                            envio(fecha,tarjeta_cliente, id_tarjeta_destino, descripcion, cantidad, token.toString()) { Renvio ->
+                                if (Renvio) {
+                                    println("Exito en envio")
+                                    println(Renvio)
+                                } else {
+                                    Toast.makeText(applicationContext, "Error inesperado en el envio", Toast.LENGTH_SHORT).show()
+                                    println("Error enviado")
+                                    println(Renvio)
+                                }
+                            }
+                        } else {
+                            // Manejar el error de tarjeta de origen
+                        }
                     }
+                } else {
+                    // Manejar el error de tarjeta de destino
                 }
             }
         }
@@ -105,7 +119,7 @@ class Transferir : AppCompatActivity() {
                         println("Error")
                         Toast.makeText(
                             applicationContext,
-                            "Error al obtener el cliente",
+                            "Error al obtener la tarjeta origen",
                             Toast.LENGTH_SHORT
                         ).show()
                         callback(-1)
@@ -114,7 +128,13 @@ class Transferir : AppCompatActivity() {
             })
         }catch (e: Exception){
             e.printStackTrace()
-            Toast.makeText(applicationContext,"Error inesperado: ${e.message}", Toast.LENGTH_SHORT).show()
+            runOnUiThread {
+                Toast.makeText(
+                    applicationContext,
+                    "Error inesperado: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             callback(-1)
         }
     }
@@ -133,6 +153,7 @@ class Transferir : AppCompatActivity() {
                     runOnUiThread {
                         Toast.makeText(applicationContext, "Error en la solicitud: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
+                    println("Error en la solicitud")
                     callback(-1)
                 }
 
@@ -146,11 +167,11 @@ class Transferir : AppCompatActivity() {
 
                     } else {
                         println("Error")
-                        Toast.makeText(
-                            applicationContext,
-                            "Error al obtener el cliente",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, "Error al obtener la tarjeta destino", Toast.LENGTH_SHORT).show()
+                        }
+                        println("Error en la respuesta")
+                        println(response)
                         callback(-1)
                     }
                 }
@@ -162,5 +183,62 @@ class Transferir : AppCompatActivity() {
             callback(-1)
         }
 
+    }
+
+    fun envio(
+        fecha: String,
+        origen:Int,
+        destino:Int,
+        descipcion:String,
+        cantidad:Int,
+        token:String,
+        callback: (Boolean) -> Unit){
+        try{
+            println("Entro")
+            val url = "${BASE_URL}/tarjetas/enviar?Origen=${origen}&Destino=${destino}&cantidad=${cantidad}&Description=${descipcion}&fecha=${fecha}"
+            val client = OkHttpClient()
+            val request = Request.Builder()
+                .url(url)
+                .header("Authorization", "Bearer $token")
+                .post(RequestBody.create(null,ByteArray(0)))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    runOnUiThread {
+                        Toast.makeText(applicationContext, "Error en la solicitud: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                    callback(false)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.isSuccessful) {
+                        callback(true)
+
+                    } else {
+                        println("Error")
+                        runOnUiThread {
+                            Toast.makeText(
+                                applicationContext,
+                                "Error al enviar los puntos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        callback(false)
+                    }
+                }
+            })
+
+        }catch (e: Exception){
+            e.printStackTrace()
+            runOnUiThread {
+                Toast.makeText(
+                    applicationContext,
+                    "Error inesperado: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            callback(false)
+        }
     }
 }

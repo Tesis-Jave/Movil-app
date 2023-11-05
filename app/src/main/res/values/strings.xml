@@ -23,6 +23,7 @@
     <string name="volver">Volver</string>
     <string name="Transferir">Transferir a otra cuenta</string>
     <string name="Historial">Ver historial</string>
+    <string name="Enviar">Enviar puntos</string>
 
 
     <string name="title_activity_productos">ProductosActivity</string>
