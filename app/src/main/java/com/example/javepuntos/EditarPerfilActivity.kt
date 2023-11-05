@@ -30,7 +30,7 @@ class EditarPerfilActivity : AppCompatActivity() {
         binding = ActivityEditarPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val idCliente = intent.getIntExtra("idCliente", -1)
-        
+
     }
 
     override fun onResume() {
