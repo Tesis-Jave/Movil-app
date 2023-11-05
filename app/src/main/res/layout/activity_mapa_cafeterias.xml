@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/vinoTinto"
+    android:paddingBottom="6dp"
+    android:paddingTop="6dp"
+    >
 
     <ImageView
+
         android:id="@+id/mapaImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:scaleType="matrix"
         android:src="@drawable/mapacafeterias"
-        android:scaleType="fitXY" />
+        app:layout_constraintTop_toBottomOf="@id/mapaImageView" />
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/vinoTinto"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 </LinearLayout>
