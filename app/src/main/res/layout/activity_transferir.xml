@@ -97,7 +97,7 @@
         android:labelFor="@id/DescripcionCampo"
         android:text="descripcion"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ButtonEnviar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/DescripcionCampo"
         app:layout_constraintTop_toBottomOf="@id/CantidadText"

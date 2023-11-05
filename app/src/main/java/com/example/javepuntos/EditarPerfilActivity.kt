@@ -29,16 +29,8 @@ class EditarPerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditarPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val idPerfil = intent.getIntExtra("idPerfil", -1)
         val idCliente = intent.getIntExtra("idCliente", -1)
-
-        if (idPerfil == -1 || idCliente == -1) {
-            Toast.makeText(
-                applicationContext,
-                "Hubo un problema relacionando los ids",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+        
     }
 
     override fun onResume() {

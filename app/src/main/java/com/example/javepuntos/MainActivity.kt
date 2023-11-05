@@ -1,20 +1,29 @@
 package com.example.javepuntos
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.javepuntos.databinding.ActivityMainBinding
+import com.example.javepuntos.model.Cliente
 import com.example.javepuntos.model.TokenResponse
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         val token = tokenResponse.token
         val id = tokenResponse.id
-        println(id)
+
 
 
         binding.fab.setOnClickListener { view ->
@@ -45,8 +55,22 @@ class MainActivity : AppCompatActivity() {
         }
         supportActionBar?.title = "Jave Puntos"
 
+        binding.buttonEP.setOnClickListener {
+            val intent=Intent(this@MainActivity,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
+            startActivity(intent)
+        }
+
+        binding.buttonHistorial.setOnClickListener {
+            val intent=Intent(this@MainActivity,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
+            startActivity(intent)
+        }
+
         binding.perfilPuntos.setOnClickListener {
-            val intent = Intent(this@MainActivity,Perfil_Puntos::class.java)
+            val intent = Intent(this@MainActivity,EditarPerfilActivity::class.java)
             intent.putExtra("response_data",token)
             intent.putExtra("idCliente",id)
             startActivity(intent)
@@ -85,4 +109,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 }

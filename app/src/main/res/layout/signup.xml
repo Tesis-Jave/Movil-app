@@ -34,6 +34,7 @@
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
         android:inputType="text"
+        android:textAlignment="center"
         app:layout_constraintLeft_toRightOf="@+id/username_Text"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +68,7 @@
         app:layout_constraintLeft_toRightOf="@id/password_text"
         app:layout_constraintTop_toBottomOf="@id/username_Campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
     <TextView
@@ -98,6 +100,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_Campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
     <TextView
         android:id="@+id/cedula_text"
@@ -128,6 +131,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
     <TextView
@@ -159,6 +163,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cedula_campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
     <TextView
@@ -177,6 +182,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/email_campo"
         android:layout_marginTop="10dp"
+
         />
 
     <EditText
@@ -190,6 +196,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/phone_campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
     <TextView
@@ -221,6 +228,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email_campo"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
     <TextView
@@ -250,7 +258,9 @@
         android:inputType="date"
         app:layout_constraintLeft_toRightOf="@id/birth_date_text"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/address_campo" />
+        app:layout_constraintTop_toBottomOf="@id/address_campo"
+        android:textAlignment="center"
+        />
 
     <Button
         android:id="@+id/button_crear_cuenta"
