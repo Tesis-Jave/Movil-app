@@ -1,17 +1,21 @@
-package com.example.javepuntos
+package com.example. javepuntos
 
-import android.content.Context
+import android.app.AlertDialog
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.Toast
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.javepuntos.databinding.ActivityEditarPerfilBinding
 import com.example.javepuntos.model.Cliente
 import com.example.javepuntos.model.Perfil
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
@@ -29,199 +33,196 @@ class EditarPerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditarPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val idCliente = intent.getIntExtra("idCliente", -1)
+        val idCliente = intent.getStringExtra("idCliente")
+        var idperfil = 0
+        val token = intent.getStringExtra("response_data")
 
-    }
+        val tipoCliente = object : TypeToken<Cliente>() {}.type
+        val tipoPerfil = object : TypeToken<Perfil>() {}.type
 
-    override fun onResume() {
-        super.onResume()
-        val idPerfil = intent.getIntExtra("idPerfil", -1)
-        val idCliente = intent.getIntExtra("idCliente", -1)
+        val url = "$BASE_URL/clientes/perfil/${idCliente}"
+        println(url)
+        val client = OkHttpClient()
 
-        val urlPerfil = "$BASE_URL/perfils/$idPerfil"
-        val urlCliente = "$BASE_URL/clientes/$idCliente"
-
-        val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
-        val token = sharedPreferences.getString("TOKEN_KEY", null)
-
-        val requestPerfil = Request.Builder()
-            .url(urlPerfil)
+        val request = Request.Builder()
+            .url(url)
             .header("Authorization", "Bearer $token")
             .build()
 
-        val requestCliente = Request.Builder()
-            .url(urlCliente)
-            .header("Authorization", "Bearer $token")
-            .build()
 
-        // Hacer la solicitud para el perfil
-        client.newCall(requestPerfil).enqueue(object : Callback {
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    println("Fallo con el endpoint de perfil")
-                    Toast.makeText(
-                        applicationContext,
-                        "Error al obtener el perfil",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                // Manejo de errores en caso de que la solicitud falle
+                println(e)
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseData = response.body()?.string()
                 if (response.isSuccessful) {
-                    val json = JSONObject(responseData)
-                    when (call.request().url().toString()) {
-                        // Manejar la respuesta del perfil
-                        "$BASE_URL/perfils/$idPerfil" -> {
-                            val idPerfil = json.getInt("id_perfil")
-                            val usuario = json.getString("usuario")
-                            val password = json.getString("password")
-                            val nombre = json.getString("nombre")
-                            val cedula = json.getLong("cedula")
-                            val cargo = json.getString("cargo")
-                            val admin = json.getBoolean("admin")
-                            perfil = Perfil(idPerfil,
-                                            usuario,
-                                password,
-                                nombre,
-                                cedula,
-                                cargo,
-                                admin
-                            )
-                            perfilRecibido = true
-                        }
+                    // Procesa la respuesta exitosa aquí
+                    val responseBody = response.body()?.string()
+
+
+
+                    val jsonObject = JSONObject(responseBody) // Convierte la respuesta en un objeto JSON
+
+                    val gson = Gson()
+
+                    val clienteJson = jsonObject.getJSONObject("cliente").toString()
+                    val perfilJson = jsonObject.getJSONObject("perfil").toString()
+
+                    val cliente: Cliente = gson.fromJson(clienteJson, tipoCliente)
+                    val perfil: Perfil = gson.fromJson(perfilJson, tipoPerfil)
+
+                    idperfil = perfil.id_perfil
+
+                    println(cliente.toString())
+                    println(perfil.toString())
+
+                    runOnUiThread {
+                        binding.editTextCif.setText(cliente.cif.toString())
+                        binding.editTextDireccion.setText(cliente.direccion1)
+                        binding.editTextEmail.setText(cliente.e_mail)
+                        binding.editTextNombreCliente.setText(cliente.nombrecliente)
+                        binding.editTextFechaNacimiento.setText(cliente.fechanacimiento.toString())
+                        binding.editTextPassword.setText(perfil.password)
+                        binding.editTextUsuario.setText(perfil.usuario)
+                        binding.editTextTelefono.setText(cliente.telefono1.toString())
                     }
 
-                    // Actualizar los campos si tanto el perfil como el cliente han sido recibidos
-                    if (perfilRecibido && clienteRecibido) {
-                        runOnUiThread {
-                            actualizarCampos()
-                        }
-                    }
                 } else {
-                    // Manejar errores para la solicitud del perfil
-                    runOnUiThread {
-                        Toast.makeText(
-                            applicationContext,
-                            "Error al obtener datos del servidor",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    println("Error")
+                    println(response.message())
                 }
             }
         })
 
-        // Hacer la solicitud para el cliente
-        client.newCall(requestCliente).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    println("Fallo con el endpoint de Cliente")
-                    Toast.makeText(
-                        applicationContext,
-                        "Error al obtener el Cliente",
-                        Toast.LENGTH_SHORT
-                    ).show()
+        binding.buttonGuardar.setOnClickListener {
+            if (token != null && binding.editTextPassword.text.toString()==binding.editTextPasswordConfirm.text.toString()) {
+                println("Entro0")
+                if(idCliente!=null){
+                    println("Entro1")
+                    modificar(idCliente, idperfil,token)
                 }
+
+            }else{
+                mostrarAlerta("No coincide la contraseña con la confirmación de la contraseña")
+            }
+        }
+
+    }
+
+    private fun mostrarAlerta(mensaje: String) {
+        Handler(Looper.getMainLooper()).post {
+            binding.editTextPassword.text.clear()
+            binding.editTextPasswordConfirm.text.clear()
+            val builder = AlertDialog.Builder(this@EditarPerfilActivity)
+            builder.setTitle("Alerta")
+            builder.setMessage(mensaje)
+            builder.setPositiveButton("Aceptar") { dialog, _ -> dialog.dismiss() }
+
+            val alertDialog = builder.create()
+            alertDialog.show()
+        }
+    }
+
+    fun modificar(id_cliente: String, id_perfil:Int, token:String){
+        println("entro2")
+
+        var clienteM = Cliente(
+            nombrecliente = binding.editTextNombreCliente.text.toString(),
+            direccion1 = binding.editTextDireccion.text.toString(),
+            e_mail = binding.editTextEmail.text.toString(),
+            fechanacimiento = binding.editTextFechaNacimiento.text.toString(),
+            telefono1 = binding.editTextTelefono.text.toString().toLong(),
+            cif = binding.editTextCif.text.toString().toLong(),
+            // Establece el resto de las propiedades a null
+            nombrecomercial = null,
+            alias = null,
+            fax = null,
+            faxpedidos = null,
+            digcontrolblanco = null,
+            codpostalbanco = null,
+            nombrebanco = null,
+            poblacionbanco = null,
+            sexo = null,
+            nif20 = null,
+            descatalogado = null,
+            tipocliente = null,
+            id_cliente = id_cliente.toInt()
+        )
+
+        var perfilM = Perfil(
+            usuario = binding.editTextUsuario.text.toString(),
+            password = binding.editTextPassword.text.toString(),
+            id_perfil = id_perfil,
+            nombre = binding.editTextNombreCliente.text.toString(),
+            cedula = binding.editTextCif.text.toString().toLong(),
+            cargo = "Cliente",
+            admin = false
+        )
+        val clienteJSON = JSONObject()
+        clienteJSON.put("nombrecliente", clienteM.nombrecliente)
+        clienteJSON.put("nombrecomercial", clienteM.nombrecomercial)
+        clienteJSON.put("cif", clienteM.cif)
+        clienteJSON.put("alias", clienteM.alias)
+        clienteJSON.put("direccion1", clienteM.direccion1)
+        clienteJSON.put("telefono1", clienteM.telefono1)
+        clienteJSON.put("fax", clienteM.fax)
+        clienteJSON.put("faxpedidos", clienteM.faxpedidos)
+        clienteJSON.put("e_mail", clienteM.e_mail)
+        clienteJSON.put("digcontrolblanco", clienteM.digcontrolblanco)
+        clienteJSON.put("codpostalbanco", clienteM.codpostalbanco)
+        clienteJSON.put("nombrebanco", clienteM.nombrebanco)
+        clienteJSON.put("poblacionbanco", clienteM.poblacionbanco)
+        clienteJSON.put("fechanacimiento", clienteM.fechanacimiento)
+        clienteJSON.put("sexo", clienteM.sexo)
+        clienteJSON.put("nif20", clienteM.nif20)
+        clienteJSON.put("descatalogado", clienteM.descatalogado)
+        clienteJSON.put("tipocliente", clienteM.tipocliente)
+        clienteJSON.put("id_cliente", clienteM.id_cliente)
+
+        val perfilJSON = JSONObject()
+        perfilJSON.put("id_perfil", perfilM.id_perfil)
+        perfilJSON.put("usuario", perfilM.usuario)
+        perfilJSON.put("password", perfilM.password)
+        perfilJSON.put("nombre", perfilM.nombre)
+        perfilJSON.put("cedula", perfilM.cedula)
+        perfilJSON.put("cargo", perfilM.cargo)
+        perfilJSON.put("admin", perfilM.admin)
+
+        val json = JSONObject()
+        json.put("clientes", clienteJSON)
+        json.put("perfil", perfilJSON)
+
+        val url = "$BASE_URL/clientes/${id_cliente}"
+
+        println(json)
+
+        val client = OkHttpClient()
+
+        val requestBody = RequestBody.create(MediaType.parse("application/json"), json.toString())
+
+        val request = Request.Builder()
+            .url(url)
+            .put(requestBody)
+            .header("Authorization", "Bearer $token")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e)
             }
 
             override fun onResponse(call: Call, response: Response) {
-                // Procesar la respuesta para la solicitud del cliente
                 if (response.isSuccessful) {
-                    val responseData = response.body()?.string()
-                    val json = JSONObject(responseData)
-
-                    // Manejar la respuesta del cliente
-                    when (call.request().url().toString()) {
-                        "$BASE_URL/clientes/$idCliente" -> {
-                            val idCliente = json.getInt("id_cliente")
-                            val nombreCliente = json.getString("nombrecliente")
-                            val nombreComercial = json.getString("nombrecomercial")
-                            val cif = json.getLong("cif")
-                            val alias = json.getString("alias")
-                            val direccion1 = json.getString("direccion1")
-                            val telefono1 = json.getLong("telefono1")
-                            val fax = json.getString("fax")
-                            val faxPedidos = json.getString("faxpedidos")
-                            val email = json.getString("e_mail")
-                            val digControlBlanco = json.getString("digcontrolblanco")
-                            val codPostalBanco = json.getString("codpostalbanco")
-                            val nombreBanco = json.getString("nombrebanco")
-                            val poblacionBanco = json.getString("poblacionbanco")
-                            val fechaNacimiento = json.getString("fechanacimiento")
-                            val sexo = json.getString("sexo")
-                            val nif20 = json.getString("nif20")
-                            val descatalogado = json.getInt("descatalogado")
-                            val tipoCliente = json.getInt("tipocliente")
-                            cliente = Cliente(
-                                idCliente,
-                                nombreCliente,
-                                nombreComercial,
-                                cif,
-                                alias,
-                                direccion1,
-                                telefono1,
-                                fax,
-                                faxPedidos,
-                                email,
-                                digControlBlanco,
-                                codPostalBanco,
-                                nombreBanco,
-                                poblacionBanco,
-                                fechaNacimiento,
-                                sexo,
-                                nif20,
-                                descatalogado,
-                                tipoCliente
-                            )
-                            clienteRecibido = true
-                        }
-                    }
-
-                    // Actualizar los campos si tanto el perfil como el cliente han sido recibidos
-                    if (perfilRecibido && clienteRecibido) {
-                        runOnUiThread {
-                            actualizarCampos()
-                        }
-                    }
+                    println("Modificacion exitosa")
+                    finish()
                 } else {
-                    // Manejar errores para la solicitud del cliente
-                    runOnUiThread {
-                        Toast.makeText(
-                            applicationContext,
-                            "Error al obtener datos del servidor",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    println("Error")
+                    println(response.message())
                 }
             }
         })
-    }
-
-    private fun actualizarCampos() {
-        val editTextUsuario = findViewById<EditText>(R.id.editTextUsuario)
-        // Cliente
-        val editTextNombreCliente = findViewById<EditText>(R.id.editTextNombreCliente)
-        val editTextCif = findViewById<EditText>(R.id.editTextCif)
-        val editTextAlias = findViewById<EditText>(R.id.editTextAlias)
-        val editTextDireccion = findViewById<EditText>(R.id.editTextDireccion)
-        val editTextTelefono = findViewById<EditText>(R.id.editTextTelefono)
-        val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
-        val editTextFechaNacimiento = findViewById<EditText>(R.id.editTextFechaNacimiento)
-        // Perfil
-
-        // Cliente
-        editTextUsuario.setText(perfil?.usuario ?: "")
-        editTextNombreCliente.setText(cliente?.nombrecliente ?: "")
-        editTextCif.setText(cliente?.cif.toString() ?: "")
-        editTextAlias.setText(cliente?.alias ?: "")
-        editTextDireccion.setText(cliente?.direccion1 ?: "")
-        editTextTelefono.setText(cliente?.telefono1.toString() ?: "")
-        editTextEmail.setText(cliente?.e_mail ?: "")
-        editTextFechaNacimiento.setText(cliente?.fechanacimiento ?: "")
-
-        // Perfil
-
     }
 
 }
