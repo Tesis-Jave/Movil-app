@@ -8,12 +8,13 @@
 
      <ImageButton
          android:id="@+id/departamentoImageButton"
-         android:layout_width="70dp"
-         android:layout_height="70dp"
+         android:layout_width="150dp"
+         android:layout_height="150dp"
          android:layout_gravity="center_vertical|center_horizontal"
          android:background="@drawable/image_button_grid_background"
          android:clickable="true"
          android:scaleType="centerCrop"
+         android:foregroundGravity="center"
          />
      <!--         android:background="@android:color/transparent"-->
 <!--     android:scaleType="fitCenter"-->

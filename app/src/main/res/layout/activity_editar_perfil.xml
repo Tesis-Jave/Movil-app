@@ -7,10 +7,6 @@
 
     <include layout="@layout/toolbar"></include>
 
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
@@ -291,15 +287,13 @@
 
 
       </LinearLayout>
-  </ScrollView>
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarBottom"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/vinoTinto"
-        >
-
+        android:layout_alignParentBottom="true">
 
         <!-- Linear Layout horizontal para los botones -->
         <LinearLayout
@@ -309,7 +303,7 @@
 
             <!-- Botones en la barra inferior -->
             <ImageButton
-                android:id="@+id/button1"
+                android:id="@+id/buttonEP"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="8dp"
@@ -329,7 +323,7 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/button3"
+                android:id="@+id/buttonHistorial"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/bill"
@@ -340,7 +334,7 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/button4"
+                android:id="@+id/botonMapa"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/map"
