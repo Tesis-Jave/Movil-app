@@ -61,16 +61,22 @@ class MainScreen : Fragment() {
         binding.buttonProductos.setOnClickListener {
             // Se lanza actividad nueva para los departamentos
             val intent = Intent(requireContext(), DepartamentosMain::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
             startActivity(intent)
         }
         binding.buttonCafeterias.setOnClickListener{
             // Se lanza actividad nueva para las cafeterias
             val intent = Intent(requireContext(), CafeteriasMain::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
             startActivity(intent)
         }
         binding.buttonPromocion.setOnClickListener{
 //             Se lanza actividad nueva para las premios
             val intent = Intent(requireContext(), PromocionesActivity ::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
             startActivity(intent)
         }
 //        binding.buttonPromocion.setOnClickListener{

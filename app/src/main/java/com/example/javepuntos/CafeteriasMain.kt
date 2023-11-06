@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.model.Cafeteria
@@ -45,27 +46,27 @@ class CafeteriasMain : AppCompatActivity() {
         val networkTask = NetworkTask(this)
         networkTask.execute(url, token)
 
-        findViewById<Button>(R.id.buttonEP).setOnClickListener {
+        findViewById<ImageButton>(R.id.buttonEP).setOnClickListener {
             val intent= Intent(this@CafeteriasMain,Transferir::class.java)
             intent.putExtra("response_data",token)
             intent.putExtra("id_cliente",idCliente)
             startActivity(intent)
         }
 
-        findViewById<Button>(R.id.buttonHistorial).setOnClickListener {
+        findViewById<ImageButton>(R.id.buttonHistorial).setOnClickListener {
             val intent= Intent(this@CafeteriasMain,Historial::class.java)
             intent.putExtra("response_data",token)
             intent.putExtra("id_cliente",idCliente)
             startActivity(intent)
         }
 
-        findViewById<Button>(R.id.perfilPuntos).setOnClickListener {
+        findViewById<ImageButton>(R.id.perfilPuntos).setOnClickListener {
             val intent = Intent(this@CafeteriasMain,EditarPerfilActivity::class.java)
             intent.putExtra("response_data",token)
             intent.putExtra("idCliente",idCliente)
             startActivity(intent)
         }
-        findViewById<Button>(R.id.botonMapa).setOnClickListener{
+        findViewById<ImageButton>(R.id.botonMapa).setOnClickListener{
             val intent = Intent(this@CafeteriasMain, MapaCafeteriasActivity::class.java)
             // Iniciar la actividad
             startActivity(intent)
