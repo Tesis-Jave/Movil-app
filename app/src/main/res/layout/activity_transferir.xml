@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Transferir">
 
+    <include layout="@layout/toolbar"></include>
+
     <TextView
         android:id="@+id/nombreText"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/nombreCampo"
@@ -22,7 +24,7 @@
 
     <EditText
         android:id="@+id/nombreCampo"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -36,7 +38,7 @@
 
     <TextView
         android:id="@+id/cedulaText"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/CedulaCampo"
@@ -50,7 +52,7 @@
 
     <EditText
         android:id="@+id/CedulaCampo"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -64,11 +66,11 @@
 
     <TextView
         android:id="@+id/CantidadText"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/CantidadCampo"
-        android:text="cantidad"
+        android:text="@string/Cantidad"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/DescipcionText"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -78,7 +80,7 @@
 
     <EditText
         android:id="@+id/CantidadCampo"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -91,11 +93,11 @@
         />
     <TextView
         android:id="@+id/DescipcionText"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:labelFor="@id/DescripcionCampo"
-        android:text="descripcion"
+        android:text="@string/Descripcion"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/ButtonEnviar"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -105,7 +107,7 @@
 
     <EditText
         android:id="@+id/DescripcionCampo"
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:autofillHints="username"
         android:background="@drawable/edit_black_border"
@@ -128,7 +130,69 @@
         app:layout_constraintTop_toBottomOf="@id/DescripcionCampo"
         android:backgroundTint="@color/naranjaLogo"
         android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textSize="28sp"
         />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vinoTinto"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <!-- Linear Layout horizontal para los botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botones en la barra inferior -->
+            <ImageButton
+                android:id="@+id/buttonEP"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/send"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/perfilPuntos"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/profile"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/buttonHistorial"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/bill"
+                android:layout_toEndOf="@id/button2"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/botonMapa"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/map"
+                android:layout_toEndOf="@id/button3"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
