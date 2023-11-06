@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.javepuntos.databinding.ActivityMainScreenBinding
 import com.example.javepuntos.model.Cliente
@@ -70,9 +69,9 @@ class MainScreen : Fragment() {
             startActivity(intent)
         }
         binding.buttonPromocion.setOnClickListener{
-            // Se lanza actividad nueva para las premios
-//            val intent = Intent(requireContext(), CafeteriasMain::class.java)
-//            startActivity(intent)
+//             Se lanza actividad nueva para las premios
+            val intent = Intent(requireContext(), PromocionesActivity ::class.java)
+            startActivity(intent)
         }
 //        binding.buttonPromocion.setOnClickListener{
 //            // Se lanza actividad nueva para las premios

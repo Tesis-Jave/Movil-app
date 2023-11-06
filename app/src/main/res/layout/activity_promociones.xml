@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"></include>
+
+    <!-- Contenido de la lista de promociones -->
+    <ListView
+        android:id="@+id/listViewPromociones"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+
+    <!-- Barra inferior con botones -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vinoTinto"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+        <!-- Linear Layout horizontal para los botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botones en la barra inferior -->
+            <ImageButton
+                android:id="@+id/button1"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/send"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/perfilPuntos"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/profile"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/bill"
+                android:layout_toEndOf="@id/button2"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/button4"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/map"
+                android:layout_toEndOf="@id/button3"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+</LinearLayout>
+
+
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--    &lt;!&ndash; Contenido de la lista de promociones &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        &lt;!&ndash; Diseño para cada elemento de la lista de promociones &ndash;&gt;-->
+<!--        <include layout="@layout/promo_list_item" />-->
+
+
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Barra inferior con botones &ndash;&gt;-->
+
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/toolbarBottom"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/vinoTinto"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        >-->
+
+
+<!--        &lt;!&ndash; Linear Layout horizontal para los botones &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            &lt;!&ndash; Botones en la barra inferior &ndash;&gt;-->
+<!--            <ImageButton-->
+<!--                android:id="@+id/button1"-->
+<!--                android:layout_width="38dp"-->
+<!--                android:layout_height="38dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/send"-->
+<!--                android:background="@drawable/botones"-->
+<!--                android:scaleType="fitCenter"/>-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/perfilPuntos"-->
+<!--                android:layout_width="38dp"-->
+<!--                android:layout_height="38dp"-->
+<!--                android:src="@drawable/profile"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:background="@drawable/botones"-->
+<!--                android:scaleType="fitCenter"/>-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/button3"-->
+<!--                android:layout_width="38dp"-->
+<!--                android:layout_height="38dp"-->
+<!--                android:src="@drawable/bill"-->
+<!--                android:layout_toEndOf="@id/button2"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:background="@drawable/botones"-->
+<!--                android:scaleType="fitCenter"/>-->
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/button4"-->
+<!--                android:layout_width="38dp"-->
+<!--                android:layout_height="38dp"-->
+<!--                android:src="@drawable/map"-->
+<!--                android:layout_toEndOf="@id/button3"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:background="@drawable/botones"-->
+<!--                android:scaleType="fitCenter"/>-->
+<!--        </LinearLayout>-->
+<!--    </com.google.android.material.appbar.MaterialToolbar>-->
+
+
+<!--</ScrollView>-->
