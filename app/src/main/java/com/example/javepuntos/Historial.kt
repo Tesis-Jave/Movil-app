@@ -1,9 +1,11 @@
 package com.example.javepuntos
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityHistorialBinding
 import com.example.javepuntos.model.Tarjeta
 import com.example.javepuntos.model.Transaccion
@@ -33,8 +35,39 @@ class Historial : AppCompatActivity() {
         binding = ActivityHistorialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
+
         val token = intent.getStringExtra("response_data")
         val id_cliente = intent.getStringExtra("id_cliente")
+
+        binding.buttonEP.setOnClickListener {
+            val intent= Intent(this@Historial,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        binding.buttonHistorial.setOnClickListener {
+            val intent= Intent(this@Historial,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        binding.perfilPuntos.setOnClickListener {
+            val intent = Intent(this@Historial,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",id_cliente)
+            startActivity(intent)
+        }
+        binding.botonMapa.setOnClickListener{
+            val intent = Intent(this@Historial, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
+
         var id_tarjeta: Int = 0
         listView = binding.listViewTransacciones
         adapter = TransaccionAdapter(this, transacciones)

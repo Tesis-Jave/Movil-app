@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityPerfilPuntosBinding
 import com.example.javepuntos.model.Cliente
 import com.google.gson.Gson
@@ -24,12 +25,44 @@ class Perfil_Puntos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPerfilPuntosBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         val token1 = intent.getStringExtra("response_data")
 
         val idCliente = intent.getStringExtra("idCliente")
+
+        binding = ActivityPerfilPuntosBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.buttonEP.setOnClickListener {
+            val intent= Intent(this@Perfil_Puntos,Transferir::class.java)
+            intent.putExtra("response_data",token1)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        binding.buttonHistorial.setOnClickListener {
+            val intent= Intent(this@Perfil_Puntos,Historial::class.java)
+            intent.putExtra("response_data",token1)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        binding.perfilPuntos.setOnClickListener {
+            val intent = Intent(this@Perfil_Puntos,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token1)
+            intent.putExtra("idCliente",idCliente)
+            startActivity(intent)
+        }
+        binding.botonMapa.setOnClickListener{
+            val intent = Intent(this@Perfil_Puntos, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
+
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
+
+
         if (idCliente==null){
             finish()
         }

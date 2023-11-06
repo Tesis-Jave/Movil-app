@@ -24,6 +24,7 @@ class ProductosListFragment : Fragment() {
     private var productID: Int = 0 // Variable para almacenar el ID del producto
     val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
     val token = sharedPreferences.getString("TOKEN_KEY", null)
+    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

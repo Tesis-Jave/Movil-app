@@ -1,8 +1,10 @@
 package com.example.javepuntos
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityTransferirBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -36,8 +38,38 @@ class Transferir : AppCompatActivity() {
         binding = ActivityTransferirBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
+
         id_cliente = intent.getStringExtra("id_cliente").toString()
         token = intent.getStringExtra("response_data").toString()
+
+        binding.buttonEP.setOnClickListener {
+            val intent= Intent(this@Transferir,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        binding.buttonHistorial.setOnClickListener {
+            val intent= Intent(this@Transferir,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        binding.perfilPuntos.setOnClickListener {
+            val intent = Intent(this@Transferir,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",id_cliente)
+            startActivity(intent)
+        }
+        binding.botonMapa.setOnClickListener{
+            val intent = Intent(this@Transferir, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
 
         binding.ButtonEnviar.setOnClickListener {
 

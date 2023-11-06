@@ -1,10 +1,12 @@
 package com.example. javepuntos
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityEditarPerfilBinding
 import com.example.javepuntos.model.Cliente
 import com.example.javepuntos.model.Perfil
@@ -107,6 +109,34 @@ class EditarPerfilActivity : AppCompatActivity() {
             }else{
                 mostrarAlerta("No coincide la contraseña con la confirmación de la contraseña")
             }
+        }
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
+        binding.buttonEP.setOnClickListener {
+            val intent= Intent(this@EditarPerfilActivity,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        binding.buttonHistorial.setOnClickListener {
+            val intent= Intent(this@EditarPerfilActivity,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        binding.perfilPuntos.setOnClickListener {
+            val intent = Intent(this@EditarPerfilActivity,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",idCliente)
+            startActivity(intent)
+        }
+        binding.botonMapa.setOnClickListener{
+            val intent = Intent(this@EditarPerfilActivity, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
         }
 
     }

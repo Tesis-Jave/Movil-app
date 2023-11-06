@@ -2,9 +2,11 @@ package com.example.javepuntos
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.Button
 import android.widget.GridLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
@@ -26,6 +28,7 @@ class CafeteriasMain : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cafeterias_main)
 
+
         // boton volver
         findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
             finish()
@@ -34,11 +37,39 @@ class CafeteriasMain : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", null)
 
+        val idCliente = intent.getStringExtra("id_cliente")
+
         val url = "$BASE_URL/cafeterias/"
 
         // Llamar a un AsyncTask para realizar la solicitud de red
         val networkTask = NetworkTask(this)
         networkTask.execute(url, token)
+
+        findViewById<Button>(R.id.buttonEP).setOnClickListener {
+            val intent= Intent(this@CafeteriasMain,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.buttonHistorial).setOnClickListener {
+            val intent= Intent(this@CafeteriasMain,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",idCliente)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.perfilPuntos).setOnClickListener {
+            val intent = Intent(this@CafeteriasMain,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",idCliente)
+            startActivity(intent)
+        }
+        findViewById<Button>(R.id.botonMapa).setOnClickListener{
+            val intent = Intent(this@CafeteriasMain, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
     }
 
     @SuppressLint("StaticFieldLeak")
