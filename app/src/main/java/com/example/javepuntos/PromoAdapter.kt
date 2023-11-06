@@ -2,6 +2,7 @@ package com.example.javepuntos
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,18 @@ class PromoAdapter(private val context: Context, private val promociones: List<P
         // Configurar los datos de la promoción en los elementos de la vista
         descripcionTextView.text = promo.descripcion
 
+        descripcionTextView.setOnClickListener {
+            // Crear un Intent para iniciar la nueva actividad (PromoInfoActivity)
+            val intent = Intent(context, PromoInfoActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            // Pasar datos adicionales si es necesario
+            intent.putExtra("PROMO_ID", promo.idPromocion) // Por ejemplo, pasando el ID de la promoción
+
+            // Iniciar la nueva actividad
+            context.startActivity(intent)
+        }
 
         return view
     }
+
 }
