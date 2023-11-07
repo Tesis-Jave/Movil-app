@@ -6,13 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".PromoInfoActivity">
 
-    <include layout="@layout/toolbar"></include>
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"></include>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:foregroundGravity="center"
         />
+
+    <!-- Barra inferior con botones -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/vinoTinto"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botones en la barra inferior -->
+            <ImageButton
+                android:id="@+id/buttonEP"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/send"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/perfilPuntos"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/profile"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/buttonHistorial"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/bill"
+                android:layout_toEndOf="@id/button2"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+
+            <ImageButton
+                android:id="@+id/botonMapa"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/map"
+                android:layout_toEndOf="@id/button3"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/botones"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

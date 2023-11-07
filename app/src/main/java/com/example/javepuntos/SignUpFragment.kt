@@ -64,6 +64,7 @@ class SignUpFragment : Fragment() {
             jsonC.put("telefono1",binding.phoneCampo.text.toString().toBigInteger())
             jsonC.put("e_mail",binding.emailCampo.text.toString())
             jsonC.put("tipocliente",1)
+            jsonC.put("fechanacimiento", binding.birthDateCampo.text.toString())
             println(jsonC.toString())
 
             val clientC = OkHttpClient()
