@@ -160,7 +160,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:background="@color/white"
-            android:src="@drawable/recomend"
+            android:src="@drawable/rec"
             android:scaleType="centerInside"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
