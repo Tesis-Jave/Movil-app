@@ -286,6 +286,7 @@
               android:gravity="center"
               android:layout_gravity="center_horizontal"
               android:layout_marginTop="20dp"
+              android:backgroundTint="@color/naranjaLogo"
               />
 
 

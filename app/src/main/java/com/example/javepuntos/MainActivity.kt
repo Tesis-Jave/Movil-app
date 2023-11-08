@@ -48,11 +48,6 @@ class MainActivity : AppCompatActivity() {
         val id = tokenResponse.id
 
 
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
         supportActionBar?.title = "Jave Puntos"
 
         binding.buttonEP.setOnClickListener {

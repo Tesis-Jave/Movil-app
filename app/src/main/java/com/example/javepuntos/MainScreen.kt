@@ -97,6 +97,33 @@ class MainScreen : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val gson = Gson()
+        val tokenResponse:TokenResponse = gson.fromJson((activity as MainActivity).intent.getStringExtra("response_data"),object: TypeToken<TokenResponse>() {}.type)
+
+        val token = tokenResponse.token
+        val id = tokenResponse.id
+
+        var nombre: TextView = binding.nombreUsuario
+        var puntos: TextView = binding.SaldoUsuario
+
+        llamarnombre(id,token){nombreAux ->
+            if(nombreAux!=null.toString()){
+                nombre.text = nombreAux
+            }
+        }
+
+        llamarpuntos(id,token){puntosaux->
+            if(puntosaux!=null){
+                puntos.text = "${puntosaux} puntos."
+            }
+        }
+
+
+    }
+
     fun llamarnombre(id_cliente: String, token:String, callback:(String)->Unit){
         val url = "${BASE_URL}/clientes/${id_cliente}"
 

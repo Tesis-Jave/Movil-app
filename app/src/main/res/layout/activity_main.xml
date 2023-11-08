@@ -76,16 +76,4 @@
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <!-- Botón flotante -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="80dp"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:background="@color/vinoTinto"/>
-
 </RelativeLayout>

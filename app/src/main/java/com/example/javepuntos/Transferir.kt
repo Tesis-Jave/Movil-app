@@ -99,10 +99,11 @@ class Transferir : AppCompatActivity() {
                             println("Exito en tarjeta origen")
                             println(tarjeta_cliente)
 
-                            envio(fecha,tarjeta_cliente, id_tarjeta_destino, descripcion, cantidad, token.toString()) { Renvio ->
+                            envio(fecha,tarjeta_cliente,id_tarjeta_destino, descripcion, cantidad, token.toString()) { Renvio ->
                                 if (Renvio) {
                                     println("Exito en envio")
                                     println(Renvio)
+                                    finish()
                                 } else {
                                     Toast.makeText(applicationContext, "Error inesperado en el envio", Toast.LENGTH_SHORT).show()
                                     println("Error enviado")
