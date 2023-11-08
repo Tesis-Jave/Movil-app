@@ -79,6 +79,14 @@ class MainScreen : Fragment() {
             intent.putExtra("id_cliente",id)
             startActivity(intent)
         }
+
+        binding.buttonRecomendacion.setOnClickListener{
+//             Se lanza actividad nueva para las premios
+            val intent = Intent(requireContext(), Recomendaciones ::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id)
+            startActivity(intent)
+        }
 //        binding.buttonPromocion.setOnClickListener{
 //            // Se lanza actividad nueva para las premios
 ////            val intent = Intent(requireContext(), CafeteriasMain::class.java)

@@ -113,15 +113,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cafeteriasContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/promocionesContainer"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/RecomendacionContainer"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
@@ -143,6 +141,39 @@
             android:gravity="top"
             android:text="Cafeterias"
             app:layout_constraintTop_toBottomOf="@id/buttonCafeterias"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/RecomendacionContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/promocionesContainer"
+        app:layout_constraintLeft_toRightOf="@id/cafeteriasContainer"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonRecomendacion"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@color/white"
+            android:src="@drawable/recomend"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:foregroundGravity="center" />
+
+        <TextView
+            android:id="@+id/textRecomendacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="Promociones"
+            app:layout_constraintTop_toBottomOf="@id/buttonRecomendacion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

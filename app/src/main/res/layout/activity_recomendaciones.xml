@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArticulosActivity">
+    tools:context=".Recomendaciones">
 
-    <!-- Barra superior con flecha de retroceso -->
     <include layout="@layout/toolbar"></include>
 
     <LinearLayout
@@ -86,6 +85,5 @@
                 android:scaleType="fitCenter"/>
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
