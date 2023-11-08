@@ -27,6 +27,7 @@
     <string name="fecha">Fecha</string>
     <string name="Cantidad">Cantidad</string>
     <string name="Descripcion">Descripción</string>
+    <string name="Recomen">Recomendaciones</string>
 
 
     <string name="title_activity_productos">ProductosActivity</string>
