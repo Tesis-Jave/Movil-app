@@ -15,6 +15,13 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: LoginBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    override fun onResume() {
+        super.onResume()
+        binding.user.text.clear()
+        binding.password.text.clear()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

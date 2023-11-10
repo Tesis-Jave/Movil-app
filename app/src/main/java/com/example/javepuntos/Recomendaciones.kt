@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import com.example.javepuntos.databinding.ActivityRecomendacionesBinding
 import com.example.javepuntos.model.Articulos
 import com.google.gson.Gson
@@ -26,6 +27,10 @@ class Recomendaciones : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecomendacionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            finish()
+        }
 
         val token= intent.getStringExtra("response_data")
         val id_cliente = intent.getStringExtra("id_cliente")

@@ -1,7 +1,9 @@
 package com.example.javepuntos
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,9 +25,38 @@ class PromocionesActivity : AppCompatActivity() {
         findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
             finish()
         }
+
+
         // recuperar token
         val sharedPreferences = getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("TOKEN_KEY", "") ?: ""
+        val id_cliente = intent.getStringExtra("id_cliente")
+
+        findViewById<ImageButton>(R.id.buttonEP).setOnClickListener {
+            val intent= Intent(this@PromocionesActivity,Transferir::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        findViewById<ImageButton>(R.id.buttonHistorial).setOnClickListener {
+            val intent= Intent(this@PromocionesActivity,Historial::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("id_cliente",id_cliente)
+            startActivity(intent)
+        }
+
+        findViewById<ImageButton>(R.id.perfilPuntos).setOnClickListener {
+            val intent = Intent(this@PromocionesActivity,EditarPerfilActivity::class.java)
+            intent.putExtra("response_data",token)
+            intent.putExtra("idCliente",id_cliente)
+            startActivity(intent)
+        }
+        findViewById<ImageButton>(R.id.botonMapa).setOnClickListener{
+            val intent = Intent(this, MapaCafeteriasActivity::class.java)
+            // Iniciar la actividad
+            startActivity(intent)
+        }
 
         val url = "$BASE_URL/promociones/"
 

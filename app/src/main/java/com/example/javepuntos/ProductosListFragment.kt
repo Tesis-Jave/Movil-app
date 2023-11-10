@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.Response
@@ -24,7 +25,7 @@ class ProductosListFragment : Fragment() {
     private var productID: Int = 0 // Variable para almacenar el ID del producto
     val sharedPreferences = requireActivity().getSharedPreferences("MiAppPreferences", Context.MODE_PRIVATE)
     val token = sharedPreferences.getString("TOKEN_KEY", null)
-    
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,12 @@ class ProductosListFragment : Fragment() {
         listView = view.findViewById(R.id.productListView)
 
         productID = arguments?.getInt("id_articulo", 0) ?: 0
+
+        view.findViewById<AppCompatImageButton>(R.id.imageButton7).setOnClickListener {
+            // Realiza una transacción para reemplazar el fragmento actual con nada (lo elimina)
+            parentFragmentManager.beginTransaction().remove(this).commit()
+        }
+
         // Llama a la función para cargar los datos de LoopBack
         loadProductData()
 
